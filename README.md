@@ -2,6 +2,8 @@
 
 **The fingerprint printing press.** An experimental morphogenesis lab that grows fingerprint ridge patterns from a reaction–diffusion (Turing) model. It follows Glover et al. (2023, *Cell*), where activator (WNT/EDAR) and inhibitor (BMP) fields form ridges that spread as waves from initiation sites on the fingertip. Where those wavefronts start and collide decides the pattern: arch, loop, whorl or tented arch.
 
+- **Idea:** Kham, with Jeep (ChatGPT) helping come up with it.
+
 Open `index.html` in any browser, or visit the GitHub Pages site. Offline, single-file, zero-dependency (Xinu).
 
 - **Presets:** arch, loop, whorl, tented arch, EDAR ablation, and a custom sandbox.
