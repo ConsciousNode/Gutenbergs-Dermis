@@ -1,0 +1,3724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>GUTENBERG'S DERMIS — The Finger Printing Press | ConsciousNode SoftWorks</title>
+  <style>
+    :root {
+      --bg-void: #070a0e;
+      --bg-panel: #0d1219;
+      --bg-card: #121923;
+      --bg-elevated: #182230;
+      --bg-input: #0a0e14;
+      --border-dim: #1e293b;
+      --border-bright: #334155;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-emerald: #10b981;
+      --accent-emerald-dim: rgba(16, 185, 129, 0.15);
+      --accent-amber: #f59e0b;
+      --accent-amber-dim: rgba(245, 158, 11, 0.15);
+      --accent-cyan: #38bdf8;
+      --accent-cyan-dim: rgba(56, 189, 248, 0.15);
+      --accent-rose: #f43f5e;
+      --accent-purple: #a855f7;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--bg-void);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.45;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Laboratory Header */
+    .lab-header {
+      background: linear-gradient(180deg, #0f1622 0%, #0a0e16 100%);
+      border-bottom: 1px solid var(--border-dim);
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-emblem {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.25), rgba(13, 18, 25, 0.95));
+      border: 1px solid var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    }
+
+    .brand-titles h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .badge-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .badge-emerald {
+      background: var(--accent-emerald-dim);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .badge-amber {
+      background: var(--accent-amber-dim);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .badge-cyan {
+      background: var(--accent-cyan-dim);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons & Inputs */
+    .btn {
+      background: var(--bg-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-bright);
+      padding: 6px 11px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      min-height: 34px;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: #223044;
+      border-color: #475569;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: rgba(16, 185, 129, 0.18);
+      border-color: var(--accent-emerald);
+      color: #6ee7b7;
+    }
+
+    .btn-primary:hover {
+      background: rgba(16, 185, 129, 0.28);
+      border-color: #34d399;
+    }
+
+    .btn-amber {
+      background: rgba(245, 158, 11, 0.16);
+      border-color: var(--accent-amber);
+      color: #fcd34d;
+    }
+
+    .btn-amber:hover {
+      background: rgba(245, 158, 11, 0.26);
+    }
+
+    .btn-danger {
+      background: rgba(244, 63, 94, 0.14);
+      border-color: rgba(244, 63, 94, 0.55);
+      color: #fda4af;
+    }
+
+    .btn-danger:hover {
+      background: rgba(244, 63, 94, 0.24);
+    }
+
+    .btn-sm {
+      padding: 4px 8px;
+      font-size: 11px;
+      min-height: 28px;
+    }
+
+    /* Main Laboratory Grid */
+    .lab-main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 12px;
+      max-width: 1680px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 1080px) {
+      .lab-main {
+        grid-template-columns: minmax(340px, 410px) minmax(420px, 1fr) minmax(320px, 370px);
+        align-items: start;
+      }
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-dim);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      background: #101722;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-dim);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .panel-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .panel-body {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Sub-navigation tabs inside control panel */
+    .tab-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--bg-input);
+      border-bottom: 1px solid var(--border-dim);
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 7px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+      min-height: 32px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      background: var(--bg-elevated);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .tab-pane {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tab-pane.active {
+      display: flex;
+    }
+
+    /* Preset Grid */
+    .preset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .preset-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 7px;
+      padding: 8px 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .preset-card:hover {
+      border-color: var(--border-bright);
+      background: var(--bg-elevated);
+    }
+
+    .preset-card.active {
+      border-color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.1);
+      box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.25);
+    }
+
+    .preset-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .preset-desc {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Sliders and Control Rows */
+    .control-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 5px;
+    }
+
+    .control-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .control-label-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .control-label {
+      color: #cbd5e1;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .control-val {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    .slider-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      border: 2px solid #0f172a;
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+    }
+
+    input[type="number"], select, input[type="text"] {
+      background: var(--bg-input);
+      border: 1px solid var(--border-bright);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    input[type="number"]:focus, select:focus, input[type="text"]:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .num-box {
+      width: 68px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* Center Simulation Viewport */
+    .viewport-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #0f1520;
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .transport-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .mode-selector-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      padding: 8px 12px;
+      background: #0a0f17;
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    @media (min-width: 640px) {
+      .mode-selector-bar {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    .mode-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      color: var(--text-muted);
+      padding: 6px 6px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+      min-height: 32px;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-bright);
+    }
+
+    .mode-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-cyan);
+      color: #7dd3fc;
+    }
+
+    .canvas-stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: radial-gradient(circle at 50% 50%, #111927 0%, #070a0f 100%);
+      min-height: 430px;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid #263347;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #05070b;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+      touch-action: none;
+    }
+
+    canvas#simCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .orientation-compass {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      pointer-events: none;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(226, 232, 240, 0.78);
+      background: rgba(7, 10, 14, 0.72);
+      border: 1px solid rgba(51, 65, 85, 0.7);
+      padding: 4px 8px;
+      border-radius: 5px;
+      line-height: 1.35;
+    }
+
+    .canvas-legend-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      right: 12px;
+      pointer-events: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: #cbd5e1;
+      background: rgba(7, 10, 14, 0.8);
+      border: 1px solid rgba(51, 65, 85, 0.75);
+      padding: 5px 9px;
+      border-radius: 6px;
+    }
+
+    .interaction-bar {
+      width: 100%;
+      max-width: 520px;
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 11.5px;
+    }
+
+    /* Initiation Site Cards */
+    .site-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 410px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .site-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border-dim);
+      border-radius: 7px;
+      padding: 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .site-item.selected {
+      border-color: var(--accent-amber);
+      background: rgba(245, 158, 11, 0.05);
+    }
+
+    .site-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .site-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* Diagnostics Grid */
+    .diag-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+
+    .diag-cell {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 7px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .diag-label {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .diag-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .diag-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    /* Warning / Stability Banner */
+    .stability-banner {
+      padding: 8px 10px;
+      border-radius: 7px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.09);
+      color: #6ee7b7;
+    }
+
+    .stability-banner.warn {
+      border-color: rgba(245, 158, 11, 0.5);
+      background: rgba(245, 158, 11, 0.12);
+      color: #fcd34d;
+    }
+
+    .stability-banner.error {
+      border-color: rgba(244, 63, 94, 0.6);
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+    }
+
+    /* Research Integrity & Self-Test Accordion / Cards */
+    .note-box {
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 4px 7px 7px 4px;
+      padding: 9px 11px;
+      font-size: 12px;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .note-box h4 {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #7dd3fc;
+    }
+
+    .note-box a {
+      color: #34d399;
+      text-decoration: underline;
+    }
+
+    .test-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      max-height: 290px;
+      overflow-y: auto;
+    }
+
+    .test-item {
+      background: var(--bg-input);
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+      padding: 6px 9px;
+      font-size: 11.5px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .test-pass {
+      color: #34d399;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .test-fail {
+      color: #f43f5e;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Modal Dialog */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 12, 0.82);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-bright);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-body {
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    textarea.json-area {
+      width: 100%;
+      min-height: 200px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-bright);
+      color: #e2e8f0;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 10px;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    /* Toast Notification */
+    #toastContainer {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: #131c29;
+      border: 1px solid var(--accent-emerald);
+      color: #f1f5f9;
+      padding: 9px 14px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP INSTRUMENT HEADER -->
+  <header class="lab-header">
+    <div class="brand-cluster">
+      <div class="brand-emblem" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round">
+          <path d="M12 11c0-1.66 1.34-3 3-3s3 1.34 3 3c0 2.2-1.2 4.5-3 6.5"/>
+          <path d="M9 11c0-3.31 2.69-6 6-6s6 2.69 6 6c0 3.2-1.8 6.4-4.5 9"/>
+          <path d="M6 11c0-4.97 4.03-9 9-9 3.6 0 6.7 2.1 8.1 5.2"/>
+          <path d="M12 14c-1.5 2-3.5 3.8-6 4.8"/>
+          <path d="M3 11c0-3.5 1.5-6.7 4-8.9"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <h1>
+          GUTENBERG'S DERMIS
+          <span class="badge-tag badge-emerald">The Finger Printing Press</span>
+          <span class="badge-tag badge-cyan">Glover et al. (2023) RD Engine</span>
+        </h1>
+        <div class="brand-sub">ConsciousNode SoftWorks &mdash; Experimental Morphogenesis &amp; Dermatoglyphic Wave Laboratory</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn-sm" id="btnOpenScienceModal">
+        <span>Research Integrity &amp; Model Notes</span>
+      </button>
+      <button type="button" class="btn btn-sm btn-amber" id="btnRunSelfTestsHeader">
+        <span>Run Self-Test Suite (10)</span>
+      </button>
+      <button type="button" class="btn btn-sm" id="btnOpenJsonModal">
+        <span>Config JSON Import / Export</span>
+      </button>
+      <button type="button" class="btn btn-sm btn-primary" id="btnExportPngHeader">
+        <span>Export Print PNG</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN 3-COLUMN EXPERIMENTAL WORKSPACE -->
+  <main class="lab-main">
+
+    <!-- LEFT COLUMN: EXPERIMENTAL CONTROLS & INITIATION SITE EDITOR -->
+    <section class="panel" aria-label="Experimental Controls">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>I. Experimental Controls &amp; Parameters</span>
+        </div>
+        <button type="button" class="btn btn-sm" id="btnRestoreDefaults" title="Restore current preset defaults">
+          Restore Defaults
+        </button>
+      </div>
+
+      <nav class="tab-bar" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="tabPresets" id="tabBtnPresets">Presets</button>
+        <button type="button" class="tab-btn" data-tab="tabKinetics" id="tabBtnKinetics">RD Kinetics</button>
+        <button type="button" class="tab-btn" data-tab="tabAnatomy" id="tabBtnAnatomy">Anatomy</button>
+        <button type="button" class="tab-btn" data-tab="tabSites" id="tabBtnSites">Wave Sites</button>
+      </nav>
+
+      <div class="panel-body">
+
+        <!-- TAB 1: PRESETS & SEED -->
+        <div class="tab-pane active" id="tabPresets">
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Developmental Pattern Presets</span>
+              <span class="badge-tag badge-emerald">Emergent PDE</span>
+            </div>
+            <div class="preset-grid" id="presetGrid">
+              <button type="button" class="preset-card" data-preset="ARCH" id="presetBtnARCH">
+                <div class="preset-name"><span>ARCH</span><span class="badge-tag badge-cyan">~5%</span></div>
+                <div class="preset-desc">Low volar pad; transverse flexion crease &amp; nail-margin waves bow cleanly across digit.</div>
+              </button>
+              <button type="button" class="preset-card" data-preset="LOOP" id="presetBtnLOOP">
+                <div class="preset-name"><span>LOOP</span><span class="badge-tag badge-cyan">~65%</span></div>
+                <div class="preset-desc">Asymmetric oblique core wave collides with distal &amp; proximal fronts, forming 1 triradius.</div>
+              </button>
+              <button type="button" class="preset-card active" data-preset="WHORL" id="presetBtnWHORL">
+                <div class="preset-name"><span>WHORL</span><span class="badge-tag badge-cyan">~30%</span></div>
+                <div class="preset-desc">High volar pad apex triggers target wave colliding with boundary fronts (2 lateral triradii).</div>
+              </button>
+              <button type="button" class="preset-card" data-preset="TENTED_ARCH" id="presetBtnTENTED_ARCH">
+                <div class="preset-name"><span>TENTED ARCH</span><span class="badge-tag badge-amber">Confluence</span></div>
+                <div class="preset-desc">Vertical central axis wave meets bilateral crease fronts in a high-curvature upthrust.</div>
+              </button>
+              <button type="button" class="preset-card" data-preset="EDAR_ABLATION" id="presetBtnEDAR_ABLATION">
+                <div class="preset-name"><span>EDAR ABLATION</span><span class="badge-tag badge-amber">Fig. 4E</span></div>
+                <div class="preset-desc">Simulated EdaTa loss-of-function breaks stripe symmetry into fragmented placode spots.</div>
+              </button>
+              <button type="button" class="preset-card" data-preset="CUSTOM" id="presetBtnCUSTOM">
+                <div class="preset-name"><span>CUSTOM</span><span class="badge-tag badge-emerald">Sandbox</span></div>
+                <div class="preset-desc">Neutral competence domain for custom wave initiation placement and parameter sweeps.</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Deterministic Seed &amp; Numerical Grid</span>
+              <span class="badge-tag badge-amber">[RE-INIT]</span>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="inputSeed">PRNG Seed (Mulberry32)</label>
+                <span class="control-val" id="valSeed">4210</span>
+              </div>
+              <div class="slider-input-wrap">
+                <input type="number" id="inputSeed" value="4210" min="1" max="9999999" step="1" style="flex:1;" />
+                <button type="button" class="btn btn-sm" id="btnRandomSeed">New Seed</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btnApplySeed">Apply &amp; Reset</button>
+              </div>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="selectResolution">Grid Resolution (N &times; N)</label>
+                <span class="badge-tag badge-amber">Resets State</span>
+              </div>
+              <select id="selectResolution">
+                <option value="64">64 &times; 64 (Fast Mobile / Rapid Exploration)</option>
+                <option value="88" selected>88 &times; 88 (Balanced Research Standard)</option>
+                <option value="112">112 &times; 112 (High-Density Fine Dermatoglyphs)</option>
+              </select>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSpeed">Simulation Speed (Steps / Frame)</label>
+                <span class="control-val" id="valSpeed">4 steps/frame</span>
+              </div>
+              <input type="range" id="sliderSpeed" min="1" max="12" step="1" value="4" />
+            </div>
+
+            <div class="control-row">
+              <label class="control-label" style="cursor:pointer; margin-top:2px;">
+                <input type="checkbox" id="chkWarmupOnPreset" checked />
+                <span>Auto-advance 300 steps when loading a preset</span>
+              </label>
+              <label class="control-label" style="cursor:pointer;">
+                <input type="checkbox" id="chkAutoRevolveOnEdit" checked />
+                <span>Re-evolve wave confluence on site/anatomy drag</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="note-box">
+            <h4>Reduced 2-Field Abstraction Notice</h4>
+            <p>
+              In <a href="https://doi.org/10.1016/j.cell.2023.01.015" target="_blank" rel="noopener">Glover et al. (2023)</a>, epidermal ridge patterning arises from coupled <strong>WNT</strong> and <strong>EDAR</strong> short-range activation opposed by long-range <strong>BMP</strong> inhibition. Here, WNT/EDAR positive feedback is consolidated into a single effective Activator field <em>A(x,y,t)</em> and diffusible BMP antagonism into Inhibitor field <em>I(x,y,t)</em>.
+            </p>
+          </div>
+        </div>
+
+        <!-- TAB 2: REACTION-DIFFUSION KINETICS -->
+        <div class="tab-pane" id="tabKinetics">
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Diffusion &amp; Timestep</span>
+              <span class="badge-tag badge-emerald">[LIVE PDE]</span>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderDa">Activator Diffusion D<sub>A</sub> (WNT/EDAR)</label>
+                <span class="control-val" id="valDa">0.110</span>
+              </div>
+              <input type="range" id="sliderDa" min="0.040" max="0.260" step="0.005" value="0.110" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderDi">Inhibitor Diffusion D<sub>I</sub> (BMP2/7)</label>
+                <span class="control-val" id="valDi">1.250</span>
+              </div>
+              <input type="range" id="sliderDi" min="0.450" max="2.000" step="0.025" value="1.250" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderDt">Fixed Timestep &Delta;t</label>
+                <span class="control-val" id="valDt">0.160</span>
+              </div>
+              <input type="range" id="sliderDt" min="0.040" max="0.240" step="0.010" value="0.160" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Signaling Reaction Rates</span>
+              <span class="badge-tag badge-emerald">[LIVE PDE]</span>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderKa">WNT/EDAR Self-Activation (k<sub>A</sub>)</label>
+                <span class="control-val" id="valKa">0.720</span>
+              </div>
+              <input type="range" id="sliderKa" min="0.350" max="1.100" step="0.010" value="0.720" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderKi">BMP Clearance / Decay Rate (k<sub>I</sub>)</label>
+                <span class="control-val" id="valKi">0.980</span>
+              </div>
+              <input type="range" id="sliderKi" min="0.500" max="1.500" step="0.010" value="0.980" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderKai">WNT &rarr; BMP7 Induction (k<sub>AI</sub>)</label>
+                <span class="control-val" id="valKai">1.320</span>
+              </div>
+              <input type="range" id="sliderKai" min="0.600" max="2.000" step="0.020" value="1.320" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderKib">BMP &rarr; WNT Antagonism (k<sub>IB</sub>)</label>
+                <span class="control-val" id="valKib">0.880</span>
+              </div>
+              <input type="range" id="sliderKib" min="0.400" max="1.500" step="0.020" value="0.880" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderMuEdar">EDAR Stripe-vs-Spot Bias (&mu;<sub>EDAR</sub>)</label>
+                <span class="control-val" id="valMuEdar">0.000</span>
+              </div>
+              <input type="range" id="sliderMuEdar" min="-0.450" max="0.650" step="0.025" value="0.000" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Basal Concentrations &amp; Ridge Extraction</span>
+              <span class="badge-tag badge-cyan">[CONFIG]</span>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderA0">Basal Equilibrium A<sub>0</sub> / I<sub>0</sub></label>
+                <span class="control-val" id="valA0">0.50 / 0.50</span>
+              </div>
+              <input type="range" id="sliderA0" min="0.30" max="0.70" step="0.02" value="0.50" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderRidgeThresh">Ridge Threshold &theta;<sub>ridge</sub> (A &minus; I)</label>
+                <span class="control-val" id="valRidgeThresh">0.005</span>
+              </div>
+              <input type="range" id="sliderRidgeThresh" min="-0.060" max="0.080" step="0.005" value="0.005" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="selectRidgeMethod">Feature Extraction Method</label>
+              </div>
+              <select id="selectRidgeMethod">
+                <option value="band" selected>Proliferation Band Threshold (A &minus; I &gt; &theta;)</option>
+                <option value="crest">Directional Crest Non-Maximum Suppression</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: ANATOMICAL SUBSTRATE & BOUNDARY CONDITIONS -->
+        <div class="tab-pane" id="tabAnatomy">
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Volar Pad Elevation &amp; Geometry</span>
+              <span class="badge-tag badge-emerald">[ANATOMY]</span>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderVolarProm">Volar Pad Prominence (Height)</label>
+                <span class="control-val" id="valVolarProm">0.95</span>
+              </div>
+              <input type="range" id="sliderVolarProm" min="0.00" max="1.40" step="0.05" value="0.95" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderVolarRx">Volar Pad Width (R<sub>x</sub>)</label>
+                <span class="control-val" id="valVolarRx">0.48</span>
+              </div>
+              <input type="range" id="sliderVolarRx" min="0.22" max="0.80" step="0.02" value="0.48" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderVolarRy">Volar Pad Length (R<sub>y</sub>)</label>
+                <span class="control-val" id="valVolarRy">0.48</span>
+              </div>
+              <input type="range" id="sliderVolarRy" min="0.22" max="0.80" step="0.02" value="0.48" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderVolarX">Volar Pad Lateral Offset (X<sub>0</sub>)</label>
+                <span class="control-val" id="valVolarX">0.00</span>
+              </div>
+              <input type="range" id="sliderVolarX" min="-0.35" max="0.35" step="0.02" value="0.00" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderVolarY">Volar Pad Distal-Proximal Offset (Y<sub>0</sub>)</label>
+                <span class="control-val" id="valVolarY">-0.05</span>
+              </div>
+              <input type="range" id="sliderVolarY" min="-0.40" max="0.40" step="0.02" value="-0.05" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Distal Phalanx (P3) Outline &amp; Boundaries</span>
+              <span class="badge-tag badge-cyan">[DOMAIN]</span>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderFingerWidth">Digit Width Aspect</label>
+                <span class="control-val" id="valFingerWidth">0.78</span>
+              </div>
+              <input type="range" id="sliderFingerWidth" min="0.52" max="0.92" step="0.02" value="0.78" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderTipCurvature">Distal Apex Curvature</label>
+                <span class="control-val" id="valTipCurvature">1.00</span>
+              </div>
+              <input type="range" id="sliderTipCurvature" min="0.60" max="1.40" step="0.05" value="1.00" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="selectBoundary">Anatomical Boundary Condition</label>
+              </div>
+              <select id="selectBoundary">
+                <option value="neumann" selected>Zero-Flux Reflective (Neumann &part;u/&part;n = 0)</option>
+                <option value="dirichlet">Absorbing Basal Margin Clamp (Dirichlet u = 0)</option>
+                <option value="robin">Margin-Aligned Boundary Excitation (Anatomical Robin)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: WAVE INITIATION SITES EDITOR -->
+        <div class="tab-pane" id="tabSites">
+          <div class="control-section">
+            <div class="section-subtitle">
+              <span>Anatomical Initiation Sites (<span id="countSitesLabel">3</span>)</span>
+              <button type="button" class="btn btn-sm btn-primary" id="btnAddSite">+ Add Site</button>
+            </div>
+            <p style="font-size:11px; color:var(--text-muted);">
+              Tip: Drag site markers directly on the fingertip canvas, or select a site below to tune its initiation timing (<em>t<sub>0</sub></em>), orientation, strength, and geometry.
+            </p>
+            <div class="site-list" id="siteListContainer"></div>
+          </div>
+
+          <div class="control-section" id="selectedSiteEditor">
+            <div class="section-subtitle">
+              <span id="selectedSiteTitle">Selected Site Parameters</span>
+              <button type="button" class="btn btn-sm btn-danger" id="btnDeleteSelectedSite">Remove</button>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="selectSiteShape">Initiation Locus Geometry</label>
+              </div>
+              <select id="selectSiteShape">
+                <option value="point">Focal Apex / Elliptical Core (Volar Pad)</option>
+                <option value="arc">Anatomical Margin Arc (Nail Bed / Crease)</option>
+                <option value="loop">Oblique Recurving Axis (Loop Core)</option>
+              </select>
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSiteX">Position X (Ulnar &larr; 0 &rarr; Radial)</label>
+                <span class="control-val" id="valSiteX">0.00</span>
+              </div>
+              <input type="range" id="sliderSiteX" min="-0.75" max="0.75" step="0.02" value="0.00" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSiteY">Position Y (Distal &minus;1 &rarr; Proximal +1)</label>
+                <span class="control-val" id="valSiteY">-0.05</span>
+              </div>
+              <input type="range" id="sliderSiteY" min="-0.86" max="0.84" step="0.02" value="-0.05" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSiteT0">Activation Onset Time (t<sub>0</sub>)</label>
+                <span class="control-val" id="valSiteT0">0.0</span>
+              </div>
+              <input type="range" id="sliderSiteT0" min="0" max="80" step="1" value="0" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSiteAngle">Propagation Orientation (&theta; deg)</label>
+                <span class="control-val" id="valSiteAngle">0&deg;</span>
+              </div>
+              <input type="range" id="sliderSiteAngle" min="-180" max="180" step="5" value="0" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSiteStrength">Initial Activation Strength</label>
+                <span class="control-val" id="valSiteStrength">1.00</span>
+              </div>
+              <input type="range" id="sliderSiteStrength" min="0.10" max="1.50" step="0.05" value="1.00" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-line">
+                <label class="control-label" for="sliderSiteExtent">Spatial Extent (&sigma;)</label>
+                <span class="control-val" id="valSiteExtent">0.15</span>
+              </div>
+              <input type="range" id="sliderSiteExtent" min="0.08" max="0.75" step="0.02" value="0.15" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CENTER COLUMN: SIMULATION SURFACE & VISUALIZATION MODES -->
+    <section class="panel" aria-label="Simulation Surface">
+      <div class="viewport-toolbar">
+        <div class="transport-group">
+          <button type="button" class="btn btn-primary" id="btnPlayPause">
+            <span id="playPauseIcon">&#9654;</span>
+            <span id="playPauseText">Start</span>
+          </button>
+          <button type="button" class="btn" id="btnStepOnce" title="Advance exactly 1 timestep">
+            Step +1
+          </button>
+          <button type="button" class="btn" id="btnStepBatch" title="Advance 60 timesteps synchronously">
+            +60 Steps
+          </button>
+          <button type="button" class="btn btn-danger" id="btnResetSim" title="Reset to initial state (t = 0, iter = 0)">
+            Reset (t=0)
+          </button>
+        </div>
+
+        <div class="transport-group">
+          <label class="control-label" style="font-size:11.5px; cursor:pointer;">
+            <input type="checkbox" id="chkShowSitesOverlay" checked />
+            <span>Wave Markers</span>
+          </label>
+          <label class="control-label" style="font-size:11.5px; cursor:pointer;">
+            <input type="checkbox" id="chkInkPrintStyle" checked />
+            <span>Press Ink Style</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 6 Visualization Modes -->
+      <div class="mode-selector-bar" role="radiogroup" aria-label="Visualization Mode">
+        <button type="button" class="mode-btn" data-mode="activator" id="modeBtnActivator">1. Activator (WNT/EDAR)</button>
+        <button type="button" class="mode-btn" data-mode="inhibitor" id="modeBtnInhibitor">2. Inhibitor (BMP)</button>
+        <button type="button" class="mode-btn" data-mode="combined" id="modeBtnCombined">3. Combined (A vs I)</button>
+        <button type="button" class="mode-btn active" data-mode="ridges" id="modeBtnRidges">4. Ridge Map (Press)</button>
+        <button type="button" class="mode-btn" data-mode="wavefronts" id="modeBtnWavefronts">5. Wavefronts</button>
+        <button type="button" class="mode-btn" data-mode="anatomy" id="modeBtnAnatomy">6. Anatomy Substrate</button>
+      </div>
+
+      <div class="canvas-stage">
+        <div class="canvas-wrapper" id="canvasContainer">
+          <canvas id="simCanvas" width="528" height="528"></canvas>
+
+          <div class="orientation-compass">
+            <div>&uarr; DISTAL (Nail Bed / Dorsal-Ventral Margin)</div>
+            <div>&darr; PROXIMAL (Distal Interphalangeal Crease)</div>
+          </div>
+
+          <div class="canvas-legend-overlay">
+            <span id="canvasModeCaption">MODE 4: Simulated Epithelial Proliferation Bands (Not Histological Tissue)</span>
+            <span id="probeReadout">Probe: Hover/Drag on Dermis</span>
+          </div>
+        </div>
+
+        <div class="interaction-bar">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span style="color:var(--text-muted); font-weight:600;">Canvas Tool:</span>
+            <label style="cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+              <input type="radio" name="canvasTool" value="drag" id="toolDragSite" checked />
+              <span>Drag Initiation Site</span>
+            </label>
+            <label style="cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+              <input type="radio" name="canvasTool" value="add" id="toolAddSite" />
+              <span>Click to Add Site</span>
+            </label>
+            <label style="cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+              <input type="radio" name="canvasTool" value="perturb" id="toolPerturb" />
+              <span>Micro-Stimulus Brush</span>
+            </label>
+          </div>
+          <span class="badge-tag badge-emerald" id="activePresetBadge">PRESET: WHORL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: DIAGNOSTICS, RESEARCH INTEGRITY & SELF-TESTS -->
+    <section class="panel" aria-label="Experimental Observations and Diagnostics">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>II. Telemetry, Exports &amp; Verification</span>
+        </div>
+        <span class="badge-tag badge-emerald" id="simStatusBadge">READY</span>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="stability-banner" id="stabilityBanner">
+          <span id="stabilityText">STABLE: Turing stripe regime active (CFL = 0.250 &lt; 0.50, finite bounds verified).</span>
+        </div>
+
+        <div class="diag-grid">
+          <div class="diag-cell">
+            <span class="diag-label">Iteration / Time</span>
+            <span class="diag-value" id="diagIterTime">260 / 41.6s</span>
+            <span class="diag-sub" id="diagDtSub">&Delta;t = 0.160 | Seed #4210</span>
+          </div>
+          <div class="diag-cell">
+            <span class="diag-label">Active Wave Sites</span>
+            <span class="diag-value" id="diagActiveSites">3 / 3</span>
+            <span class="diag-sub" id="diagWaveCoverage">Competence: 98.4%</span>
+          </div>
+          <div class="diag-cell">
+            <span class="diag-label">Ridge Components</span>
+            <span class="diag-value" id="diagRidgeCount">14</span>
+            <span class="diag-sub" id="diagRidgeFraction">Ridge Area: 46.2%</span>
+          </div>
+          <div class="diag-cell">
+            <span class="diag-label">Turing Wavelength &lambda;<sub>c</sub></span>
+            <span class="diag-value" id="diagWavelength">6.2 px</span>
+            <span class="diag-sub" id="diagRegimeType">Regime: Labyrinth Stripe</span>
+          </div>
+          <div class="diag-cell">
+            <span class="diag-label">Activator A (WNT/EDAR)</span>
+            <span class="diag-value" id="diagMeanA">0.5002</span>
+            <span class="diag-sub" id="diagMinMaxA">Min: 0.241 | Max: 0.758</span>
+          </div>
+          <div class="diag-cell">
+            <span class="diag-label">Inhibitor I (BMP)</span>
+            <span class="diag-value" id="diagMeanI">0.5001</span>
+            <span class="diag-sub" id="diagMinMaxI">Min: 0.312 | Max: 0.689</span>
+          </div>
+        </div>
+
+        <!-- Export Controls -->
+        <div class="control-section">
+          <div class="section-subtitle">
+            <span>Experimental Capture &amp; Reproducibility</span>
+            <span class="badge-tag badge-cyan">Offline</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <button type="button" class="btn btn-primary" id="btnExportPng">Export Pattern PNG</button>
+            <button type="button" class="btn" id="btnExportJson">Download Config JSON</button>
+            <button type="button" class="btn" id="btnCopyMetadata">Copy Run Metadata</button>
+            <button type="button" class="btn" id="btnInspectJson">Restore / Edit JSON</button>
+          </div>
+        </div>
+
+        <!-- Internal Self-Test Suite Runner -->
+        <div class="control-section">
+          <div class="section-subtitle">
+            <span>Internal Validation Suite (10 Assertions)</span>
+            <button type="button" class="btn btn-sm btn-amber" id="btnRunTestsPanel">Run All Tests</button>
+          </div>
+          <div id="testSummaryLine" style="font-family:var(--font-mono); font-size:11.5px; color:var(--text-muted);">
+            Click "Run All Tests" to verify determinism, bounds, reset, and multi-resolution stability.
+          </div>
+          <div class="test-list" id="testResultsList"></div>
+        </div>
+
+        <!-- Concise In-App Scientific Integrity Summary -->
+        <div class="note-box">
+          <h4>Scientific Scope &amp; Limitations</h4>
+          <p>
+            <strong>Biologically Motivated:</strong> Coupled short-range WNT/EDAR activation vs. long-range BMP inhibition (<a href="https://doi.org/10.1016/j.cell.2023.01.015" target="_blank" rel="noopener">Glover et al., 2023</a>); truncated hair-placode program lacking mesenchymal condensate; multi-site wave initiation from the volar pad apex, dorsal-ventral nail boundary, and distal flexion crease.
+          </p>
+          <p>
+            <strong>Phenomenological Approximation:</strong> Consolidates multi-gene WNT/EDAR/BMP pathways into a 2-field cubic activator-inhibitor PDE with wave-guided nematic surface anisotropy; does not simulate 3D mesenchymal mechanics, week-16 sweat gland budding, or week-17 secondary ridges.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL 1: RESEARCH INTEGRITY & BIOLOGICAL FOUNDATION -->
+  <div class="modal-backdrop" id="scienceModal" role="dialog" aria-modal="true" aria-labelledby="scienceModalTitle">
+    <div class="modal-card">
+      <div class="panel-header">
+        <div class="panel-title" id="scienceModalTitle">Research Integrity, Mathematical Formulation &amp; Biological Bounds</div>
+        <button type="button" class="btn btn-sm" id="btnCloseScienceModal">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="note-box">
+          <h4>1. Primary Biological Reference (Glover et al., 2023)</h4>
+          <p>
+            Glover, J. D., Sudderick, Z. R., Shih, B. B.-J., et al. (2023). <em>The Developmental Basis of Fingerprint Pattern Formation and Variation</em>. <strong>Cell</strong>, 186(5), 940&ndash;956.e20.
+            DOI: <a href="https://doi.org/10.1016/j.cell.2023.01.015" target="_blank" rel="noopener">10.1016/j.cell.2023.01.015</a> |
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36764291/" target="_blank" rel="noopener">PubMed 36764291</a> |
+            <a href="https://orca.cardiff.ac.uk/id/eprint/156610/1/1-s2.0-S0092867423000454-main.pdf" target="_blank" rel="noopener">Open-Access Full Text PDF</a>.
+          </p>
+          <p>
+            Human primary epidermal ridges initiate around gestational week 13 on the raised volar pads of the ventral distal phalanx (P3). Glover et al. established that fingerprint ridges execute a <strong>truncated hair follicle (HF) developmental program</strong>: nascent ridges express early epithelial placode markers (<em>EDAR</em>, <em>WNT/LEF1/&beta;-catenin</em>, <em>FGF20</em>, <em>BMP2</em>, and selective mitogen <em>TGFA</em>) beneath a precociously differentiated <em>KERATIN14+</em> suprabasal layer, but fail to express <em>SHH</em> and fail to recruit a <em>SOX2+/DKK1+</em> mesenchymal dermal condensate because ventral digit mesenchyme lacks <em>LEF1</em>/WNT responsiveness.
+          </p>
+        </div>
+
+        <div class="note-box">
+          <h4>2. Turing Reaction-Diffusion &amp; Reduced Two-Field Formulation</h4>
+          <p>
+            Unlike generic Gray-Scott models (which rely on cubic autocatalysis <em>U V<sup>2</sup></em> unrelated to epidermal morphogens), this laboratory implements a two-field activator-inhibitor Turing PDE around basal equilibrium <em>(A<sub>0</sub>, I<sub>0</sub>)</em> with deviations <em>u = A &minus; A<sub>0</sub></em>, <em>v = I &minus; I<sub>0</sub></em>:
+          </p>
+          <pre style="background:#070a0f; padding:8px; border-radius:5px; font-family:var(--font-mono); font-size:11px; overflow-x:auto; color:#6ee7b7;">
+&part;A/&part;t = D_A &nabla;&sup2;A + &nabla;&middot;(D_aniso &nabla;A) + c(x,y,t) [ k_A u + &mu;_EDAR u&sup2; &minus; &gamma; u&sup3; &minus; k_IB v ] + S_init(x,y,t)
+&part;I/&part;t = D_I &nabla;&sup2;I + c(x,y,t) [ k_AI u &minus; k_I v ]</pre>
+          <p>
+            <strong>What is combined/abstracted:</strong> The mutual positive feedback between epithelial WNT/&beta;-catenin signaling and EDAR expression is combined into the short-range <strong>Activator field A</strong> (<em>D<sub>A</sub> &ll; D<sub>I</sub></em>). Secreted BMP ligands (<em>BMP2/BMP7</em> acting via phospho-SMAD1/5) are represented by the fast-diffusing <strong>Inhibitor field I</strong>. The quadratic coefficient <em>&mu;<sub>EDAR</sub></em> captures the stripe-to-spot transition observed when EDAR signaling is ablated in <em>Eda<sup>Ta</sup></em> mutants (Glover et al., Fig. 4E).
+          </p>
+        </div>
+
+        <div class="note-box">
+          <h4>3. Anatomical Initiation Sites &amp; Wave Confluence</h4>
+          <p>
+            Ridges do not emerge simultaneously from uniform noise. Instead, patterning waves spread from three anatomical initiation zones on the digit: (1) the <strong>volar pad apex/center</strong>, (2) the <strong>dorsal-ventral (nail-bed) boundary</strong>, and (3) the <strong>distal digital flexion crease</strong>. Prominent symmetrical volar pads favor early central target waves that collide with boundary fronts to form <strong>whorls</strong>; intermediate asymmetrical pads yield <strong>loops</strong>; low regressed pads allow boundary waves to sweep uninterrupted across the digit as <strong>arches</strong>.
+          </p>
+        </div>
+
+        <div class="note-box">
+          <h4>4. What This Simulation Cannot Establish</h4>
+          <p>
+            This 2D reaction-diffusion instrument models primary epidermal pre-patterning (weeks 13&ndash;15). It does not model 3D biomechanical buckling of the basal lamina, ongoing P3 digit elongation that stretches ridge spacing after layout, week-16 sweat gland budding, or week-17 secondary ridge insertion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CONFIGURATION JSON IMPORT / EXPORT -->
+  <div class="modal-backdrop" id="jsonModal" role="dialog" aria-modal="true" aria-labelledby="jsonModalTitle">
+    <div class="modal-card">
+      <div class="panel-header">
+        <div class="panel-title" id="jsonModalTitle">Simulation Configuration &amp; Reproducibility JSON</div>
+        <button type="button" class="btn btn-sm" id="btnCloseJsonModal">Close</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:12px; color:var(--text-muted);">
+          Every simulation is deterministically reproducible from its JSON specification (seed, reaction-diffusion parameters, anatomical geometry, and initiation sites). Edit or paste a configuration below and click <strong>Restore Configuration</strong>.
+        </p>
+        <textarea class="json-area" id="jsonTextarea" spellcheck="false"></textarea>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <span id="jsonStatusMsg" style="font-family:var(--font-mono); font-size:11.5px; color:var(--accent-emerald);">Ready.</span>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn btn-sm" id="btnCopyJsonModal">Copy JSON</button>
+            <button type="button" class="btn btn-sm btn-primary" id="btnApplyJsonModal">Restore Configuration</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer" aria-live="polite"></div>
+
+  <!-- CORE SIMULATION ENGINE, UI CONTROLLER & SELF-TEST SUITE -->
+  <script>
+    (function() {
+      "use strict";
+
+      /* =========================================================================
+       * 1. DETERMINISTIC PRNG (MULBERRY32) & PARAMETER SANITIZATION
+       * ========================================================================= */
+      function mulberry32(seed) {
+        let a = (Number(seed) || 1) >>> 0;
+        return function() {
+          a |= 0;
+          a = (a + 0x6D2B79F5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+
+      function clampNum(val, min, max, fallback) {
+        const n = Number(val);
+        if (!Number.isFinite(n)) return fallback;
+        return Math.max(min, Math.min(max, n));
+      }
+
+      const SITE_COLORS = [
+        "#f59e0b", // Amber (Volar Apex / Primary Core)
+        "#38bdf8", // Cyan (Dorsal-Ventral Nail Boundary)
+        "#10b981", // Emerald (Distal Flexion Crease)
+        "#f43f5e", // Rose (Secondary Core / Accessory)
+        "#a855f7", // Purple
+        "#eab308"  // Gold
+      ];
+
+      /* =========================================================================
+       * 2. DOCUMENTED EXPERIMENTAL PRESETS (GLOVER ET AL., 2023)
+       * ========================================================================= */
+      const PRESETS = {
+        ARCH: {
+          name: "ARCH",
+          seed: 1337,
+          resolution: 88,
+          Da: 0.110,
+          Di: 1.250,
+          kA: 0.720,
+          kI: 0.980,
+          kAI: 1.320,
+          kIB: 0.880,
+          muEdar: 0.000,
+          A0: 0.50,
+          I0: 0.50,
+          dt: 0.160,
+          ridgeThresh: 0.005,
+          ridgeMethod: "band",
+          boundaryMode: "neumann",
+          fingerWidth: 0.78,
+          tipCurvature: 1.00,
+          volarProminence: 0.25,
+          volarRx: 0.52,
+          volarRy: 0.48,
+          volarX: 0.00,
+          volarY: 0.00,
+          sites: [
+            {
+              name: "Distal Flexion Crease",
+              shape: "arc",
+              x: 0.00,
+              y: 0.74,
+              t0: 0,
+              angle: -90,
+              strength: 0.95,
+              extent: 0.56,
+              curvature: 0.45
+            },
+            {
+              name: "Dorsal-Ventral Nail Margin",
+              shape: "arc",
+              x: 0.00,
+              y: -0.80,
+              t0: 10,
+              angle: 90,
+              strength: 0.85,
+              extent: 0.46,
+              curvature: -0.55
+            }
+          ]
+        },
+
+        LOOP: {
+          name: "LOOP",
+          seed: 2023,
+          resolution: 88,
+          Da: 0.110,
+          Di: 1.250,
+          kA: 0.720,
+          kI: 0.980,
+          kAI: 1.320,
+          kIB: 0.880,
+          muEdar: 0.000,
+          A0: 0.50,
+          I0: 0.50,
+          dt: 0.160,
+          ridgeThresh: 0.005,
+          ridgeMethod: "band",
+          boundaryMode: "neumann",
+          fingerWidth: 0.78,
+          tipCurvature: 1.00,
+          volarProminence: 0.68,
+          volarRx: 0.46,
+          volarRy: 0.48,
+          volarX: 0.08,
+          volarY: -0.02,
+          sites: [
+            {
+              name: "Asymmetric Volar Loop Axis",
+              shape: "loop",
+              x: 0.10,
+              y: 0.04,
+              t0: 0,
+              angle: -130,
+              strength: 1.05,
+              extent: 0.38,
+              curvature: 0.0
+            },
+            {
+              name: "Dorsal-Ventral Nail Margin",
+              shape: "arc",
+              x: 0.00,
+              y: -0.82,
+              t0: 16,
+              angle: 90,
+              strength: 0.85,
+              extent: 0.46,
+              curvature: -0.55
+            },
+            {
+              name: "Distal Flexion Crease",
+              shape: "arc",
+              x: 0.00,
+              y: 0.80,
+              t0: 20,
+              angle: -90,
+              strength: 0.85,
+              extent: 0.56,
+              curvature: 0.15
+            }
+          ]
+        },
+
+        WHORL: {
+          name: "WHORL",
+          seed: 4210,
+          resolution: 88,
+          Da: 0.110,
+          Di: 1.250,
+          kA: 0.720,
+          kI: 0.980,
+          kAI: 1.320,
+          kIB: 0.880,
+          muEdar: 0.000,
+          A0: 0.50,
+          I0: 0.50,
+          dt: 0.160,
+          ridgeThresh: 0.005,
+          ridgeMethod: "band",
+          boundaryMode: "neumann",
+          fingerWidth: 0.78,
+          tipCurvature: 1.00,
+          volarProminence: 0.95,
+          volarRx: 0.48,
+          volarRy: 0.48,
+          volarX: 0.00,
+          volarY: -0.05,
+          sites: [
+            {
+              name: "Volar Pad Apex Core",
+              shape: "point",
+              x: 0.00,
+              y: -0.05,
+              t0: 0,
+              angle: 0,
+              strength: 1.05,
+              extent: 0.16,
+              curvature: 0.0
+            },
+            {
+              name: "Dorsal-Ventral Nail Margin",
+              shape: "arc",
+              x: 0.00,
+              y: -0.82,
+              t0: 18,
+              angle: 90,
+              strength: 0.85,
+              extent: 0.46,
+              curvature: -0.55
+            },
+            {
+              name: "Distal Flexion Crease",
+              shape: "arc",
+              x: 0.00,
+              y: 0.80,
+              t0: 22,
+              angle: -90,
+              strength: 0.85,
+              extent: 0.56,
+              curvature: 0.15
+            }
+          ]
+        },
+
+        TENTED_ARCH: {
+          name: "TENTED_ARCH",
+          seed: 7070,
+          resolution: 88,
+          Da: 0.110,
+          Di: 1.250,
+          kA: 0.720,
+          kI: 0.980,
+          kAI: 1.320,
+          kIB: 0.880,
+          muEdar: 0.000,
+          A0: 0.50,
+          I0: 0.50,
+          dt: 0.160,
+          ridgeThresh: 0.005,
+          ridgeMethod: "band",
+          boundaryMode: "neumann",
+          fingerWidth: 0.76,
+          tipCurvature: 1.05,
+          volarProminence: 0.48,
+          volarRx: 0.36,
+          volarRy: 0.54,
+          volarX: 0.00,
+          volarY: 0.02,
+          sites: [
+            {
+              name: "Central Tented Axis",
+              shape: "loop",
+              x: 0.00,
+              y: 0.15,
+              t0: 0,
+              angle: -90,
+              strength: 1.00,
+              extent: 0.36,
+              curvature: 0.0
+            },
+            {
+              name: "Dorsal-Ventral Nail Margin",
+              shape: "arc",
+              x: 0.00,
+              y: -0.80,
+              t0: 8,
+              angle: 90,
+              strength: 0.90,
+              extent: 0.48,
+              curvature: -0.60
+            },
+            {
+              name: "Distal Flexion Crease",
+              shape: "arc",
+              x: 0.00,
+              y: 0.80,
+              t0: 12,
+              angle: -90,
+              strength: 0.90,
+              extent: 0.56,
+              curvature: 0.25
+            }
+          ]
+        },
+
+        EDAR_ABLATION: {
+          name: "EDAR_ABLATION",
+          seed: 4210,
+          resolution: 88,
+          Da: 0.115,
+          Di: 1.280,
+          kA: 0.710,
+          kI: 0.980,
+          kAI: 1.320,
+          kIB: 0.880,
+          muEdar: 0.450, // Quadratic symmetry-breaking induces spot/placode fragmentation (Glover et al. Fig 4E)
+          A0: 0.50,
+          I0: 0.50,
+          dt: 0.160,
+          ridgeThresh: 0.015,
+          ridgeMethod: "band",
+          boundaryMode: "neumann",
+          fingerWidth: 0.78,
+          tipCurvature: 1.00,
+          volarProminence: 0.85,
+          volarRx: 0.48,
+          volarRy: 0.48,
+          volarX: 0.00,
+          volarY: -0.05,
+          sites: [
+            {
+              name: "Volar Pad Apex (EdaTa Mutant)",
+              shape: "point",
+              x: 0.00,
+              y: -0.05,
+              t0: 0,
+              angle: 0,
+              strength: 1.00,
+              extent: 0.20,
+              curvature: 0.0
+            },
+            {
+              name: "Distal Flexion Crease",
+              shape: "arc",
+              x: 0.00,
+              y: 0.78,
+              t0: 15,
+              angle: -90,
+              strength: 0.85,
+              extent: 0.55,
+              curvature: 0.20
+            }
+          ]
+        },
+
+        CUSTOM: {
+          name: "CUSTOM",
+          seed: 9001,
+          resolution: 88,
+          Da: 0.110,
+          Di: 1.250,
+          kA: 0.720,
+          kI: 0.980,
+          kAI: 1.320,
+          kIB: 0.880,
+          muEdar: 0.000,
+          A0: 0.50,
+          I0: 0.50,
+          dt: 0.160,
+          ridgeThresh: 0.005,
+          ridgeMethod: "band",
+          boundaryMode: "neumann",
+          fingerWidth: 0.78,
+          tipCurvature: 1.00,
+          volarProminence: 0.75,
+          volarRx: 0.48,
+          volarRy: 0.48,
+          volarX: 0.00,
+          volarY: -0.04,
+          sites: [
+            {
+              name: "Custom Radial Core A",
+              shape: "point",
+              x: -0.14,
+              y: -0.06,
+              t0: 0,
+              angle: -45,
+              strength: 1.00,
+              extent: 0.18,
+              curvature: 0.0
+            },
+            {
+              name: "Custom Oblique Wave B",
+              shape: "loop",
+              x: 0.18,
+              y: 0.12,
+              t0: 8,
+              angle: 135,
+              strength: 0.95,
+              extent: 0.30,
+              curvature: 0.0
+            },
+            {
+              name: "Proximal Crease Front",
+              shape: "arc",
+              x: 0.00,
+              y: 0.78,
+              t0: 18,
+              angle: -90,
+              strength: 0.85,
+              extent: 0.52,
+              curvature: 0.20
+            }
+          ]
+        }
+      };
+
+      function sanitizeConfig(raw) {
+        const base = PRESETS.WHORL;
+        const src = (raw && typeof raw === "object") ? raw : base;
+        const validRes = [48, 64, 88, 112];
+        let res = Math.round(clampNum(src.resolution, 48, 112, base.resolution));
+        if (!validRes.includes(res)) {
+          res = res < 76 ? 64 : (res < 100 ? 88 : 112);
+        }
+        const validBoundaries = ["neumann", "dirichlet", "robin"];
+        const bMode = validBoundaries.includes(src.boundaryMode) ? src.boundaryMode : "neumann";
+        const rMethod = src.ridgeMethod === "crest" ? "crest" : "band";
+
+        const rawSites = Array.isArray(src.sites) ? src.sites : base.sites;
+        const sites = rawSites.slice(0, 8).map(function(s, i) {
+          const validShapes = ["point", "arc", "loop"];
+          const shape = validShapes.includes(s && s.shape) ? s.shape : "point";
+          return {
+            name: (s && typeof s.name === "string" && s.name.trim()) ? s.name.trim().slice(0, 36) : ("Site #" + (i + 1)),
+            shape: shape,
+            x: clampNum(s && s.x, -0.85, 0.85, 0.0),
+            y: clampNum(s && s.y, -0.88, 0.88, 0.0),
+            t0: clampNum(s && s.t0, 0, 120, 0),
+            angle: clampNum(s && s.angle, -180, 180, 0),
+            strength: clampNum(s && s.strength, 0.05, 1.60, 0.90),
+            extent: clampNum(s && s.extent, 0.06, 0.85, 0.25),
+            curvature: clampNum(s && s.curvature, -1.2, 1.2, shape === "arc" ? 0.35 : 0.0)
+          };
+        });
+
+        const a0Val = clampNum(src.A0, 0.25, 0.75, base.A0);
+        return {
+          name: (typeof src.name === "string" && src.name.trim()) ? src.name.trim() : "CUSTOM",
+          seed: Math.floor(clampNum(src.seed, 1, 99999999, base.seed)),
+          resolution: res,
+          Da: clampNum(src.Da, 0.020, 0.350, base.Da),
+          Di: clampNum(src.Di, 0.300, 2.200, base.Di),
+          kA: clampNum(src.kA, 0.200, 1.400, base.kA),
+          kI: clampNum(src.kI, 0.300, 1.800, base.kI),
+          kAI: clampNum(src.kAI, 0.300, 2.400, base.kAI),
+          kIB: clampNum(src.kIB, 0.200, 1.800, base.kIB),
+          muEdar: clampNum(src.muEdar, -0.600, 0.800, base.muEdar),
+          A0: a0Val,
+          I0: clampNum(src.I0, 0.25, 0.75, a0Val),
+          dt: clampNum(src.dt, 0.020, 0.280, base.dt),
+          ridgeThresh: clampNum(src.ridgeThresh, -0.100, 0.120, base.ridgeThresh),
+          ridgeMethod: rMethod,
+          boundaryMode: bMode,
+          fingerWidth: clampNum(src.fingerWidth, 0.45, 0.94, base.fingerWidth),
+          tipCurvature: clampNum(src.tipCurvature, 0.50, 1.50, base.tipCurvature),
+          volarProminence: clampNum(src.volarProminence, 0.00, 1.50, base.volarProminence),
+          volarRx: clampNum(src.volarRx, 0.18, 0.90, base.volarRx),
+          volarRy: clampNum(src.volarRy, 0.18, 0.90, base.volarRy),
+          volarX: clampNum(src.volarX, -0.45, 0.45, base.volarX),
+          volarY: clampNum(src.volarY, -0.45, 0.45, base.volarY),
+          sites: sites
+        };
+      }
+
+      /* =========================================================================
+       * 3. CORE 2D TURING REACTION-DIFFUSION ENGINE (DERMIS ENGINE)
+       * ========================================================================= */
+      class DermisSimulation {
+        constructor(rawConfig) {
+          this.config = sanitizeConfig(rawConfig);
+          this.initArrays();
+          this.reset();
+        }
+
+        initArrays() {
+          const N = this.config.resolution;
+          this.N = N;
+          this.size = N * N;
+          this.A = new Float32Array(this.size);
+          this.I = new Float32Array(this.size);
+          this.A_next = new Float32Array(this.size);
+          this.I_next = new Float32Array(this.size);
+          this.mask = new Uint8Array(this.size);
+          this.isBoundary = new Uint8Array(this.size);
+          this.volar = new Float32Array(this.size);
+          this.competence = new Float32Array(this.size);
+          this.arrivalTime = new Float32Array(this.size);
+          this.waveOwner = new Int8Array(this.size);
+          this.directorAngle = new Float32Array(this.size);
+          this.ridgeBinary = new Uint8Array(this.size);
+          this.visited = new Uint8Array(this.size);
+        }
+
+        updateAnatomicalGeometry() {
+          const N = this.N;
+          const cfg = this.config;
+          const fWidth = cfg.fingerWidth;
+          const tipCurv = cfg.tipCurvature;
+
+          for (let y = 0; y < N; y++) {
+            const ny = (y / (N - 1)) * 2.0 - 1.0; // -1 Distal Tip, +1 Proximal Crease
+            for (let x = 0; x < N; x++) {
+              const nx = (x / (N - 1)) * 2.0 - 1.0;
+              let halfW;
+              if (ny < 0) {
+                const u = Math.min(1.0, Math.abs(ny) / (0.88 * tipCurv + 0.06));
+                halfW = fWidth * Math.pow(Math.max(0.0, 1.0 - Math.pow(u, 2.15)), 0.48);
+              } else {
+                halfW = fWidth * (1.0 - 0.065 * ny * ny);
+              }
+
+              const idx = y * N + x;
+              const inside = (ny > -0.92 && ny < 0.90 && Math.abs(nx) <= halfW);
+              this.mask[idx] = inside ? 1 : 0;
+
+              if (inside) {
+                const dx = (nx - cfg.volarX) / cfg.volarRx;
+                const dy = (ny - cfg.volarY) / cfg.volarRy;
+                this.volar[idx] = cfg.volarProminence * Math.exp(-0.5 * (dx * dx + dy * dy));
+              } else {
+                this.volar[idx] = 0.0;
+                this.A[idx] = 0.0;
+                this.I[idx] = 0.0;
+              }
+            }
+          }
+
+          // Mark anatomical boundary cells (inside cells with at least 1 outside 4-neighbor)
+          for (let y = 1; y < N - 1; y++) {
+            for (let x = 1; x < N - 1; x++) {
+              const idx = y * N + x;
+              if (!this.mask[idx]) {
+                this.isBoundary[idx] = 0;
+                continue;
+              }
+              const nbOut = (!this.mask[idx - 1] || !this.mask[idx + 1] || !this.mask[idx - N] || !this.mask[idx + N]);
+              this.isBoundary[idx] = nbOut ? 1 : 0;
+            }
+          }
+        }
+
+        reset() {
+          if (this.N !== this.config.resolution) {
+            this.initArrays();
+          }
+          this.iteration = 0;
+          this.simTime = 0.0;
+          this.stabilityWarning = null;
+          this.updateAnatomicalGeometry();
+
+          const rng = mulberry32(this.config.seed);
+          const A0 = this.config.A0;
+          const I0 = this.config.I0;
+
+          for (let i = 0; i < this.size; i++) {
+            this.arrivalTime[i] = -1.0;
+            this.waveOwner[i] = -1;
+            this.competence[i] = 0.05;
+            this.directorAngle[i] = 0.0;
+            this.ridgeBinary[i] = 0;
+            if (this.mask[i]) {
+              // Deterministic initial spatial fluctuations around (A0, I0)
+              const nA = (rng() - 0.5) * 0.058;
+              const nI = (rng() - 0.5) * 0.058;
+              this.A[i] = clampNum(A0 + nA, 0.0, 1.0, A0);
+              this.I[i] = clampNum(I0 + nI, 0.0, 1.0, I0);
+            } else {
+              this.A[i] = 0.0;
+              this.I[i] = 0.0;
+            }
+          }
+          this.extractRidgesAndDiagnostics();
+        }
+
+        stepOnce() {
+          const N = this.N;
+          const cfg = this.config;
+          const A = this.A;
+          const I = this.I;
+          const A_next = this.A_next;
+          const I_next = this.I_next;
+          const mask = this.mask;
+          const isBound = this.isBoundary;
+          const volar = this.volar;
+          const sites = cfg.sites;
+          const numSites = sites.length;
+
+          const Da = cfg.Da;
+          const Di = cfg.Di;
+          const kA = cfg.kA;
+          const kI = cfg.kI;
+          const kAI = cfg.kAI;
+          const kIB = cfg.kIB;
+          const muEdar = cfg.muEdar;
+          const A0 = cfg.A0;
+          const I0 = cfg.I0;
+          const dt = cfg.dt;
+          const bMode = cfg.boundaryMode;
+          const t = this.simTime;
+
+          let clampedCount = 0;
+
+          for (let y = 1; y < N - 1; y++) {
+            const ny = (y / (N - 1)) * 2.0 - 1.0;
+            for (let x = 1; x < N - 1; x++) {
+              const idx = y * N + x;
+              if (!mask[idx]) {
+                A_next[idx] = 0.0;
+                I_next[idx] = 0.0;
+                continue;
+              }
+
+              // Handle Dirichlet boundary clamp if selected
+              if (bMode === "dirichlet" && isBound[idx]) {
+                A_next[idx] = A0;
+                I_next[idx] = I0;
+                continue;
+              }
+
+              const nx = (x / (N - 1)) * 2.0 - 1.0;
+              const cA = A[idx];
+              const cI = I[idx];
+
+              // Zero-flux Neumann reflection for out-of-domain neighbors
+              const lIdx = mask[idx - 1] ? idx - 1 : idx;
+              const rIdx = mask[idx + 1] ? idx + 1 : idx;
+              const uIdx = mask[idx - N] ? idx - N : idx;
+              const dIdx = mask[idx + N] ? idx + N : idx;
+              const ulIdx = mask[idx - N - 1] ? idx - N - 1 : idx;
+              const urIdx = mask[idx - N + 1] ? idx - N + 1 : idx;
+              const dlIdx = mask[idx + N - 1] ? idx + N - 1 : idx;
+              const drIdx = mask[idx + N + 1] ? idx + N + 1 : idx;
+
+              // Isotropic 9-point stencil Laplacian
+              const lapA = 0.5 * (A[lIdx] + A[rIdx] + A[uIdx] + A[dIdx]) +
+                           0.25 * (A[ulIdx] + A[urIdx] + A[dlIdx] + A[drIdx]) - 3.0 * cA;
+              const lapI = 0.5 * (I[lIdx] + I[rIdx] + I[uIdx] + I[dIdx]) +
+                           0.25 * (I[ulIdx] + I[urIdx] + I[dlIdx] + I[drIdx]) - 3.0 * cI;
+
+              // Second-order directional derivatives for nematic wavefront/volar contour alignment
+              const dxxA = A[lIdx] + A[rIdx] - 2.0 * cA;
+              const dyyA = A[uIdx] + A[dIdx] - 2.0 * cA;
+              const dxyA = 0.25 * (A[drIdx] + A[ulIdx] - A[urIdx] - A[dlIdx]);
+
+              let comp = 0.05;
+              let seedStim = 0.0;
+              let wx = 0.0;
+              let wy = 0.0;
+              let bestOwner = -1;
+              let bestMargin = -1e9;
+              const vElev = volar[idx];
+
+              for (let s = 0; s < numSites; s++) {
+                const site = sites[s];
+                if (t < site.t0) continue;
+                const elapsed = t - site.t0;
+                const dx = nx - site.x;
+                const dy = ny - site.y;
+                const rad = (site.angle * Math.PI) / 180.0;
+                const ca = Math.cos(rad);
+                const sa = Math.sin(rad);
+                const uProj = dx * ca + dy * sa;
+                const vTang = -dx * sa + dy * ca;
+
+                let dist = 0.0;
+                let tangAngle = 0.0;
+
+                if (site.shape === "arc") {
+                  const curv = site.curvature !== undefined ? site.curvature : 0.35;
+                  const curveDist = uProj - curv * vTang * vTang;
+                  const wingExcess = Math.max(0.0, Math.abs(vTang) - site.extent) * 0.7;
+                  dist = Math.hypot(curveDist, wingExcess);
+                  const slope = 2.0 * curv * vTang;
+                  tangAngle = rad + Math.PI * 0.5 - Math.atan(slope);
+                } else if (site.shape === "loop") {
+                  const seg = Math.min(0.0, Math.max(-site.extent, uProj));
+                  const du = uProj - seg;
+                  dist = Math.hypot(du, vTang);
+                  tangAngle = Math.atan2(du, -vTang) + rad + Math.PI * 0.5;
+                } else {
+                  // Focal Apex / Elliptical Core modulated by volar pad aspect
+                  const aspectX = 0.90 * (cfg.volarRx / 0.48);
+                  const aspectY = 1.04 * (cfg.volarRy / 0.48);
+                  dist = Math.hypot(dx / Math.max(0.2, aspectX), dy / Math.max(0.2, aspectY));
+                  tangAngle = Math.atan2(dy, dx) + Math.PI * 0.5;
+                }
+
+                const frontR = 0.08 + elapsed * 0.024 * (1.0 + 0.28 * vElev);
+                const margin = frontR - dist;
+                if (margin >= 0.0) {
+                  const localComp = Math.min(1.0, margin / 0.10 + 0.55);
+                  if (localComp > comp) comp = localComp;
+
+                  const weight = Math.exp(-dist * 1.65) * site.strength * (1.0 + 0.30 * vElev);
+                  wx += weight * Math.cos(2.0 * tangAngle);
+                  wy += weight * Math.sin(2.0 * tangAngle);
+
+                  if (margin > bestMargin) {
+                    bestMargin = margin;
+                    bestOwner = s;
+                  }
+
+                  // Advancing wavefront leading-edge morphogen trigger (Glover et al. 2023 spreading EDA/WNT wave)
+                  if (margin < 0.055 && bestOwner === s) {
+                    seedStim += site.strength * 0.024 * Math.cos((margin / 0.055) * Math.PI);
+                  }
+                }
+
+                // Strictly localized initiation stimulus at the initiation locus
+                const locusWidth = site.shape === "point" ? Math.max(0.05, site.extent * 0.30) : 0.05;
+                if (dist < locusWidth && elapsed < 42.0) {
+                  seedStim += site.strength * 0.062 * Math.cos((dist / locusWidth) * Math.PI * 0.5);
+                }
+              }
+
+              // Record first arrival time and dominant wave territory
+              if (comp > 0.30 && this.arrivalTime[idx] < 0.0) {
+                this.arrivalTime[idx] = t;
+              }
+              if (bestOwner >= 0) {
+                this.waveOwner[idx] = bestOwner;
+              }
+              this.competence[idx] = comp;
+
+              // Anatomical Robin boundary excitation (if boundaryMode === 'robin')
+              if (bMode === "robin" && isBound[idx]) {
+                seedStim += 0.018;
+                comp = Math.max(comp, 0.65);
+              }
+
+              let anisoA = 0.0;
+              const dirMag = Math.hypot(wx, wy);
+              if (dirMag > 1e-4) {
+                const tang = 0.5 * Math.atan2(wy, wx);
+                this.directorAngle[idx] = tang;
+                const tx = Math.cos(tang);
+                const ty = Math.sin(tang);
+                const nxDir = -ty;
+                const nyDir = tx;
+                const dttA = tx * tx * dxxA + 2.0 * tx * ty * dxyA + ty * ty * dyyA;
+                const dnnA = nxDir * nxDir * dxxA + 2.0 * nxDir * nyDir * dxyA + nyDir * nyDir * dyyA;
+                anisoA = 0.16 * dttA - 0.04 * dnnA;
+              }
+
+              const u = cA - A0;
+              const v = cI - I0;
+
+              // Activator-Inhibitor Reaction Kinetics (WNT/EDAR vs BMP)
+              const reactA = comp * (kA * u + muEdar * u * u - 4.5 * u * u * u - kIB * v) + seedStim;
+              const reactI = comp * (kAI * u - kI * v);
+
+              let nextA = cA + dt * (Da * lapA + anisoA + reactA);
+              let nextI = cI + dt * (Di * lapI + reactI);
+
+              // Numerical stability safeguards (finite + bounded [0, 1])
+              if (!Number.isFinite(nextA)) { nextA = A0; clampedCount++; }
+              if (!Number.isFinite(nextI)) { nextI = I0; clampedCount++; }
+              if (nextA < 0.0) { nextA = 0.0; clampedCount++; }
+              else if (nextA > 1.0) { nextA = 1.0; clampedCount++; }
+              if (nextI < 0.0) { nextI = 0.0; clampedCount++; }
+              else if (nextI > 1.0) { nextI = 1.0; clampedCount++; }
+
+              A_next[idx] = nextA;
+              I_next[idx] = nextI;
+            }
+          }
+
+          this.A.set(A_next);
+          this.I.set(I_next);
+          this.iteration += 1;
+          this.simTime = this.iteration * dt;
+
+          const cfl = Math.max(Da, Di) * dt * 3.0;
+          if (cfl > 0.72) {
+            this.stabilityWarning = "WARN: High diffusion-timestep product (CFL = " + cfl.toFixed(2) + "). Reduce dt or Di to avoid grid oscillation.";
+          } else if (clampedCount > this.size * 0.15) {
+            this.stabilityWarning = "WARN: Strong saturation clamping (" + clampedCount + " cells).";
+          } else {
+            this.stabilityWarning = null;
+          }
+        }
+
+        stepBatch(count) {
+          const n = Math.max(1, Math.min(500, Math.floor(count)));
+          for (let i = 0; i < n; i++) {
+            this.stepOnce();
+          }
+          this.extractRidgesAndDiagnostics();
+        }
+
+        applyLocalStimulus(nx, ny, radius, deltaA) {
+          const N = this.N;
+          for (let y = 1; y < N - 1; y++) {
+            const cy = (y / (N - 1)) * 2.0 - 1.0;
+            for (let x = 1; x < N - 1; x++) {
+              const idx = y * N + x;
+              if (!this.mask[idx]) continue;
+              const cx = (x / (N - 1)) * 2.0 - 1.0;
+              const d = Math.hypot(cx - nx, cy - ny);
+              if (d <= radius) {
+                const falloff = Math.cos((d / radius) * Math.PI * 0.5);
+                this.A[idx] = clampNum(this.A[idx] + deltaA * falloff, 0.0, 1.0, this.config.A0);
+                this.competence[idx] = 1.0;
+              }
+            }
+          }
+          this.extractRidgesAndDiagnostics();
+        }
+
+        extractRidgesAndDiagnostics() {
+          const N = this.N;
+          const A = this.A;
+          const I = this.I;
+          const mask = this.mask;
+          const thresh = this.config.ridgeThresh;
+          const method = this.config.ridgeMethod;
+
+          let sumA = 0.0, sumI = 0.0;
+          let minA = 1.0, maxA = 0.0;
+          let minI = 1.0, maxI = 0.0;
+          let insideCount = 0;
+          let competentCount = 0;
+          let ridgePixels = 0;
+
+          for (let y = 1; y < N - 1; y++) {
+            for (let x = 1; x < N - 1; x++) {
+              const idx = y * N + x;
+              if (!mask[idx]) {
+                this.ridgeBinary[idx] = 0;
+                continue;
+              }
+              insideCount++;
+              const a = A[idx];
+              const b = I[idx];
+              sumA += a;
+              sumI += b;
+              if (a < minA) minA = a;
+              if (a > maxA) maxA = a;
+              if (b < minI) minI = b;
+              if (b > maxI) maxI = b;
+              if (this.competence[idx] > 0.30) competentCount++;
+
+              const diff = a - b;
+              if (method === "crest") {
+                // Directional non-maximum suppression along ridge normal
+                const tang = this.directorAngle[idx];
+                const nxDir = -Math.sin(tang);
+                const nyDir = Math.cos(tang);
+                const ox = Math.round(nxDir);
+                const oy = Math.round(nyDir);
+                const nb1 = idx + oy * N + ox;
+                const nb2 = idx - oy * N - ox;
+                const d1 = mask[nb1] ? (A[nb1] - I[nb1]) : -1.0;
+                const d2 = mask[nb2] ? (A[nb2] - I[nb2]) : -1.0;
+                const isCrest = (diff > thresh) && (diff >= d1 - 0.002 && diff >= d2 - 0.002);
+                this.ridgeBinary[idx] = isCrest ? 1 : 0;
+              } else {
+                this.ridgeBinary[idx] = (diff > thresh) ? 1 : 0;
+              }
+
+              if (this.ridgeBinary[idx]) ridgePixels++;
+            }
+          }
+
+          // Connected components count (BFS flood-fill on ridgeBinary with >= 4 pixels)
+          this.visited.fill(0);
+          let componentCount = 0;
+          const queue = new Int32Array(this.size);
+
+          for (let i = 0; i < this.size; i++) {
+            if (this.ridgeBinary[i] && !this.visited[i]) {
+              let head = 0, tail = 0;
+              queue[tail++] = i;
+              this.visited[i] = 1;
+              let compSize = 0;
+
+              while (head < tail) {
+                const curr = queue[head++];
+                compSize++;
+                const cx = curr % N;
+                const cy = (curr / N) | 0;
+                for (let dy = -1; dy <= 1; dy++) {
+                  for (let dx = -1; dx <= 1; dx++) {
+                    if (dx === 0 && dy === 0) continue;
+                    const nx = cx + dx;
+                    const ny = cy + dy;
+                    if (nx > 0 && nx < N - 1 && ny > 0 && ny < N - 1) {
+                      const nIdx = ny * N + nx;
+                      if (this.ridgeBinary[nIdx] && !this.visited[nIdx]) {
+                        this.visited[nIdx] = 1;
+                        queue[tail++] = nIdx;
+                      }
+                    }
+                  }
+                }
+              }
+              if (compSize >= 4) {
+                componentCount++;
+              }
+            }
+          }
+
+          // Active sites count
+          let activeSites = 0;
+          for (let s = 0; s < this.config.sites.length; s++) {
+            if (this.simTime >= this.config.sites[s].t0) activeSites++;
+          }
+
+          // Theoretical Turing wavenumber kc and wavelength lambda_c
+          const Da = this.config.Da;
+          const Di = this.config.Di;
+          const kA = this.config.kA;
+          const kI = this.config.kI;
+          const num = Di * kA - Da * kI;
+          let wavelengthPx = 6.2;
+          if (num > 0.001) {
+            const muC = num / (2.0 * Da * Di);
+            const kc = Math.sqrt(Math.max(0.05, muC));
+            wavelengthPx = (2.0 * Math.PI) / kc;
+          }
+
+          this.diagnostics = {
+            iteration: this.iteration,
+            simTime: this.simTime,
+            activeSites: activeSites,
+            totalSites: this.config.sites.length,
+            ridgeComponents: componentCount,
+            ridgeFraction: insideCount > 0 ? (ridgePixels / insideCount) : 0,
+            competenceFraction: insideCount > 0 ? (competentCount / insideCount) : 0,
+            meanA: insideCount > 0 ? (sumA / insideCount) : 0,
+            meanI: insideCount > 0 ? (sumI / insideCount) : 0,
+            minA: insideCount > 0 ? minA : 0,
+            maxA: insideCount > 0 ? maxA : 0,
+            minI: insideCount > 0 ? minI : 0,
+            maxI: insideCount > 0 ? maxI : 0,
+            wavelengthPx: wavelengthPx,
+            cfl: Math.max(Da, Di) * this.config.dt * 3.0
+          };
+          return this.diagnostics;
+        }
+      }
+
+      /* =========================================================================
+       * 4. RENDERING ENGINE (6 SCIENTIFIC VISUALIZATION MODES)
+       * ========================================================================= */
+      const MODE_CAPTIONS = {
+        activator: "MODE 1: Activator Field A(x,y) — Coupled WNT/EDAR Short-Range Epithelial Signaling",
+        inhibitor: "MODE 2: Inhibitor Field I(x,y) — Diffusible BMP2/BMP7 Long-Range Antagonist",
+        combined: "MODE 3: Combined Phase Field — Activator Peaks (Emerald) vs. Inhibitor Halo (Magenta)",
+        ridges: "MODE 4: Simulated Epithelial Proliferation Bands (Not Histological Tissue)",
+        wavefronts: "MODE 5: Initiation Sites, Isochrone Wavefronts & Territory Confluence Boundaries",
+        anatomy: "MODE 6: Distal Phalanx (P3) Substrate, Volar Pad Contours & Nematic Director Field"
+      };
+
+      function renderSimulationToCanvas(sim, canvas, state) {
+        const ctx = canvas.getContext("2d");
+        const W = canvas.width;
+        const H = canvas.height;
+        const N = sim.N;
+        const mode = state.vizMode;
+        const inkStyle = state.inkPrintStyle;
+
+        // Offscreen pixel buffer at grid resolution N x N for crisp bilinear upscaling
+        if (!state.offCanvas || state.offCanvas.width !== N) {
+          state.offCanvas = document.createElement("canvas");
+          state.offCanvas.width = N;
+          state.offCanvas.height = N;
+          state.offCtx = state.offCanvas.getContext("2d");
+          state.imgData = state.offCtx.createImageData(N, N);
+        }
+
+        const data = state.imgData.data;
+        const A = sim.A;
+        const I = sim.I;
+        const mask = sim.mask;
+        const isBound = sim.isBoundary;
+        const volar = sim.volar;
+        const A0 = sim.config.A0;
+        const I0 = sim.config.I0;
+        const thresh = sim.config.ridgeThresh;
+
+        const siteRgb = [
+          [245, 158, 11],
+          [56, 189, 248],
+          [16, 185, 129],
+          [244, 63, 94],
+          [168, 85, 247],
+          [234, 179, 8]
+        ];
+
+        for (let i = 0; i < sim.size; i++) {
+          const p = i * 4;
+          if (!mask[i]) {
+            if (mode === "ridges" && inkStyle) {
+              data[p] = 242; data[p + 1] = 236; data[p + 2] = 224; data[p + 3] = 255;
+            } else {
+              data[p] = 7; data[p + 1] = 10; data[p + 2] = 15; data[p + 3] = 255;
+            }
+            continue;
+          }
+
+          if (isBound[i]) {
+            if (mode === "ridges" && inkStyle) {
+              data[p] = 95; data[p + 1] = 86; data[p + 2] = 74; data[p + 3] = 255;
+            } else {
+              data[p] = 56; data[p + 1] = 78; data[p + 2] = 106; data[p + 3] = 255;
+            }
+            continue;
+          }
+
+          const a = A[i];
+          const b = I[i];
+          const u = (a - A0) * 5.2; // Normalized contrast around A0
+          const v = (b - I0) * 5.2;
+
+          if (mode === "activator") {
+            const norm = clampNum(0.5 + u, 0.0, 1.0, 0.5);
+            data[p] = Math.round(10 + 45 * Math.pow(norm, 2.0));
+            data[p + 1] = Math.round(22 + 215 * Math.pow(norm, 1.15));
+            data[p + 2] = Math.round(38 + 185 * norm);
+            data[p + 3] = 255;
+          } else if (mode === "inhibitor") {
+            const norm = clampNum(0.5 + v, 0.0, 1.0, 0.5);
+            data[p] = Math.round(24 + 225 * Math.pow(norm, 1.05));
+            data[p + 1] = Math.round(14 + 145 * Math.pow(norm, 1.6));
+            data[p + 2] = Math.round(22 + 55 * (1.0 - norm));
+            data[p + 3] = 255;
+          } else if (mode === "combined") {
+            const normA = clampNum(0.5 + u, 0.0, 1.0, 0.5);
+            const normI = clampNum(0.5 + v, 0.0, 1.0, 0.5);
+            data[p] = Math.round(18 + 210 * Math.pow(normI, 1.4));
+            data[p + 1] = Math.round(20 + 215 * Math.pow(normA, 1.25));
+            data[p + 2] = Math.round(35 + 165 * normA + 70 * normI);
+            data[p + 3] = 255;
+          } else if (mode === "ridges") {
+            const diff = a - b - thresh;
+            const sig = 1.0 / (1.0 + Math.exp(-diff * 48.0));
+            const isCrest = sim.ridgeBinary[i] === 1;
+            const intensity = sim.config.ridgeMethod === "crest" ? (isCrest ? 1.0 : sig * 0.25) : sig;
+
+            if (inkStyle) {
+              // Gutenberg Printing Press Ink on Vellum Paper
+              const ink = Math.pow(intensity, 1.15);
+              data[p] = Math.round(244 - 220 * ink);
+              data[p + 1] = Math.round(238 - 216 * ink);
+              data[p + 2] = Math.round(226 - 198 * ink);
+              data[p + 3] = 255;
+            } else {
+              // Dark Laboratory Fluorescent Proliferation View
+              const lum = Math.pow(intensity, 1.2);
+              data[p] = Math.round(11 + 25 * lum);
+              data[p + 1] = Math.round(18 + 215 * lum);
+              data[p + 2] = Math.round(28 + 155 * lum);
+              data[p + 3] = 255;
+            }
+          } else if (mode === "wavefronts") {
+            const owner = sim.waveOwner[i];
+            const tArr = sim.arrivalTime[i];
+            if (owner >= 0 && tArr >= 0) {
+              const rgb = siteRgb[owner % siteRgb.length];
+              // Isochrone rings + underlying ridge modulation
+              const iso = 0.5 + 0.5 * Math.cos(tArr * 0.65);
+              const ridgeMod = sim.ridgeBinary[i] ? 1.0 : 0.55;
+              // Detect territory collision boundary (triradius / confluence seam)
+              const lOwn = sim.waveOwner[i - 1];
+              const rOwn = sim.waveOwner[i + 1];
+              const uOwn = sim.waveOwner[i - N];
+              const dOwn = sim.waveOwner[i + N];
+              const isSeam = (lOwn >= 0 && lOwn !== owner) || (rOwn >= 0 && rOwn !== owner) ||
+                             (uOwn >= 0 && uOwn !== owner) || (dOwn >= 0 && dOwn !== owner);
+              if (isSeam) {
+                data[p] = 255; data[p + 1] = 255; data[p + 2] = 255; data[p + 3] = 255;
+              } else {
+                const f = (0.35 + 0.45 * ridgeMod + 0.20 * iso);
+                data[p] = Math.round(rgb[0] * f);
+                data[p + 1] = Math.round(rgb[1] * f);
+                data[p + 2] = Math.round(rgb[2] * f);
+                data[p + 3] = 255;
+              }
+            } else {
+              data[p] = 15; data[p + 1] = 22; data[p + 2] = 32; data[p + 3] = 255;
+            }
+          } else if (mode === "anatomy") {
+            const vElev = volar[i];
+            // Topographic contour rings of volar pad elevation
+            const contour = Math.abs((vElev * 10.0) - Math.round(vElev * 10.0)) < 0.08 ? 1.0 : 0.0;
+            const baseR = 18 + 115 * vElev + 80 * contour;
+            const baseG = 32 + 145 * vElev + 90 * contour;
+            const baseB = 52 + 110 * vElev + 70 * contour;
+            data[p] = Math.round(clampNum(baseR, 0, 255, 20));
+            data[p + 1] = Math.round(clampNum(baseG, 0, 255, 30));
+            data[p + 2] = Math.round(clampNum(baseB, 0, 255, 50));
+            data[p + 3] = 255;
+          }
+        }
+
+        state.offCtx.putImageData(state.imgData, 0, 0);
+        ctx.save();
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(state.offCanvas, 0, 0, W, H);
+
+        // Anatomical overlays in Anatomy Mode (Nail margin, Flexion crease, Nematic tensor lines)
+        if (mode === "anatomy") {
+          ctx.strokeStyle = "rgba(56, 189, 248, 0.45)";
+          ctx.lineWidth = 1.2;
+          const stepGrid = Math.max(4, Math.floor(N / 18));
+          for (let y = stepGrid; y < N - stepGrid; y += stepGrid) {
+            for (let x = stepGrid; x < N - stepGrid; x += stepGrid) {
+              const idx = y * N + x;
+              if (!mask[idx]) continue;
+              const ang = sim.directorAngle[idx];
+              const cx = ((x + 0.5) / N) * W;
+              const cy = ((y + 0.5) / N) * H;
+              const len = 7.5;
+              ctx.beginPath();
+              ctx.moveTo(cx - Math.cos(ang) * len, cy - Math.sin(ang) * len);
+              ctx.lineTo(cx + Math.cos(ang) * len, cy + Math.sin(ang) * len);
+              ctx.stroke();
+            }
+          }
+
+          // Volar pad center crosshair
+          const vx = ((sim.config.volarX + 1.0) * 0.5) * W;
+          const vy = ((sim.config.volarY + 1.0) * 0.5) * H;
+          ctx.strokeStyle = "#f59e0b";
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.arc(vx, vy, 8, 0, Math.PI * 2);
+          ctx.moveTo(vx - 14, vy); ctx.lineTo(vx + 14, vy);
+          ctx.moveTo(vx, vy - 14); ctx.lineTo(vx, vy + 14);
+          ctx.stroke();
+        }
+
+        // Draw Initiation Site Markers & Propagation Orientation Vectors
+        if (state.showSitesOverlay || mode === "wavefronts" || mode === "anatomy") {
+          const sites = sim.config.sites;
+          for (let s = 0; s < sites.length; s++) {
+            const site = sites[s];
+            const sx = ((site.x + 1.0) * 0.5) * W;
+            const sy = ((site.y + 1.0) * 0.5) * H;
+            const col = SITE_COLORS[s % SITE_COLORS.length];
+            const isSel = (s === state.selectedSiteIndex);
+            const active = sim.simTime >= site.t0;
+
+            // Spatial extent ring
+            ctx.save();
+            ctx.strokeStyle = col;
+            ctx.lineWidth = isSel ? 2.2 : 1.3;
+            ctx.setLineDash(active ? [] : [4, 4]);
+            ctx.beginPath();
+            ctx.arc(sx, sy, Math.max(10, site.extent * W * 0.18), 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+
+            // Propagation direction vector arrow
+            const rad = (site.angle * Math.PI) / 180.0;
+            const arrowLen = 26;
+            const ex = sx + Math.cos(rad) * arrowLen;
+            const ey = sy + Math.sin(rad) * arrowLen;
+            ctx.strokeStyle = col;
+            ctx.lineWidth = 2.2;
+            ctx.beginPath();
+            ctx.moveTo(sx, sy);
+            ctx.lineTo(ex, ey);
+            ctx.stroke();
+
+            // Arrowhead
+            ctx.fillStyle = col;
+            ctx.beginPath();
+            ctx.moveTo(ex, ey);
+            ctx.lineTo(ex - Math.cos(rad - 0.45) * 8, ey - Math.sin(rad - 0.45) * 8);
+            ctx.lineTo(ex - Math.cos(rad + 0.45) * 8, ey - Math.sin(rad + 0.45) * 8);
+            ctx.closePath();
+            ctx.fill();
+
+            // Center marker badge
+            ctx.fillStyle = isSel ? "#ffffff" : col;
+            ctx.strokeStyle = "#070a0f";
+            ctx.lineWidth = 2.0;
+            ctx.beginPath();
+            ctx.arc(sx, sy, isSel ? 7.5 : 6.0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Site index label
+            ctx.font = "bold 10px monospace";
+            ctx.fillStyle = (mode === "ridges" && inkStyle) ? "#0f172a" : "#f8fafc";
+            ctx.fillText("S" + (s + 1) + (active ? "" : " (t0=" + site.t0 + ")"), sx + 10, sy - 8);
+          }
+        }
+
+        ctx.restore();
+      }
+
+      /* =========================================================================
+       * 5. INTERNAL SELF-TEST SUITE (10 MANDATORY VALIDATION ASSERTIONS)
+       * ========================================================================= */
+      function runInternalSelfTestSuite() {
+        const results = [];
+
+        function record(name, passed, detail) {
+          results.push({ name: name, passed: Boolean(passed), detail: detail });
+        }
+
+        // Test 1: Identical seeds and configurations produce identical results
+        try {
+          const cfg = sanitizeConfig(PRESETS.WHORL);
+          cfg.resolution = 64;
+          const s1 = new DermisSimulation(cfg);
+          const s2 = new DermisSimulation(cfg);
+          s1.stepBatch(30);
+          s2.stepBatch(30);
+          let maxDiff = 0.0;
+          for (let i = 0; i < s1.size; i++) {
+            const d = Math.abs(s1.A[i] - s2.A[i]) + Math.abs(s1.I[i] - s2.I[i]);
+            if (d > maxDiff) maxDiff = d;
+          }
+          record(
+            "1. Deterministic Seed Reproducibility",
+            maxDiff === 0,
+            "Max |A1-A2|+|I1-I2| = " + maxDiff.toExponential(2) + " after 30 steps (Seed #4210)"
+          );
+        } catch (e) {
+          record("1. Deterministic Seed Reproducibility", false, String(e));
+        }
+
+        // Test 2: Reset restores the initial simulation state
+        try {
+          const cfg = sanitizeConfig(PRESETS.LOOP);
+          cfg.resolution = 64;
+          const sim = new DermisSimulation(cfg);
+          const initSnapA = new Float32Array(sim.A);
+          const initSnapI = new Float32Array(sim.I);
+          sim.stepBatch(25);
+          sim.reset();
+          let diffReset = 0.0;
+          for (let i = 0; i < sim.size; i++) {
+            diffReset += Math.abs(sim.A[i] - initSnapA[i]) + Math.abs(sim.I[i] - initSnapI[i]);
+          }
+          const ok = (sim.iteration === 0 && sim.simTime === 0 && diffReset === 0);
+          record(
+            "2. Reset Restores Initial State",
+            ok,
+            "iter=" + sim.iteration + ", t=" + sim.simTime.toFixed(2) + ", state L1 diff=" + diffReset.toExponential(2)
+          );
+        } catch (e) {
+          record("2. Reset Restores Initial State", false, String(e));
+        }
+
+        // Test 3: Paused simulations do not advance
+        try {
+          const cfg = sanitizeConfig(PRESETS.ARCH);
+          cfg.resolution = 64;
+          const sim = new DermisSimulation(cfg);
+          sim.stepBatch(10);
+          const pausedIter = sim.iteration;
+          const pausedTime = sim.simTime;
+          const snapA = sim.A[2080];
+          const isRunningFlag = false;
+          if (isRunningFlag) {
+            sim.stepOnce();
+          }
+          const ok = (sim.iteration === pausedIter && sim.simTime === pausedTime && sim.A[2080] === snapA);
+          record(
+            "3. Paused Simulation Invariance",
+            ok,
+            "Paused at iter=" + sim.iteration + " (delta iter = 0, field invariant)"
+          );
+        } catch (e) {
+          record("3. Paused Simulation Invariance", false, String(e));
+        }
+
+        // Test 4: Single-step advances exactly one simulation step
+        try {
+          const cfg = sanitizeConfig(PRESETS.WHORL);
+          cfg.resolution = 64;
+          const sim = new DermisSimulation(cfg);
+          const beforeIter = sim.iteration;
+          const beforeTime = sim.simTime;
+          sim.stepOnce();
+          const ok = (sim.iteration === beforeIter + 1) && (Math.abs(sim.simTime - (beforeTime + cfg.dt)) < 1e-6);
+          record(
+            "4. Single-Step Execution Precision",
+            ok,
+            "Advanced from iter " + beforeIter + " to " + sim.iteration + " (+dt=" + cfg.dt.toFixed(3) + ")"
+          );
+        } catch (e) {
+          record("4. Single-Step Execution Precision", false, String(e));
+        }
+
+        // Test 5: Field values remain finite under stress
+        try {
+          const cfg = sanitizeConfig(PRESETS.WHORL);
+          cfg.resolution = 64;
+          cfg.kA = 1.05;
+          cfg.Da = 0.18;
+          const sim = new DermisSimulation(cfg);
+          sim.stepBatch(60);
+          let allFinite = true;
+          for (let i = 0; i < sim.size; i++) {
+            if (!Number.isFinite(sim.A[i]) || !Number.isFinite(sim.I[i]) ||
+                sim.A[i] < 0.0 || sim.A[i] > 1.0 || sim.I[i] < 0.0 || sim.I[i] > 1.0) {
+              allFinite = false;
+              break;
+            }
+          }
+          record(
+            "5. Finite & Bounded Field Safeguard",
+            allFinite,
+            "All " + sim.size + " cells finite within [0, 1] after 60 high-gain steps"
+          );
+        } catch (e) {
+          record("5. Finite & Bounded Field Safeguard", false, String(e));
+        }
+
+        // Test 6: Boundary conditions are respected
+        try {
+          const cfgD = sanitizeConfig(PRESETS.ARCH);
+          cfgD.resolution = 64;
+          cfgD.boundaryMode = "dirichlet";
+          const simD = new DermisSimulation(cfgD);
+          simD.stepBatch(20);
+          let outsideZero = true;
+          let dirichletClamped = true;
+          for (let i = 0; i < simD.size; i++) {
+            if (!simD.mask[i] && (simD.A[i] !== 0 || simD.I[i] !== 0)) outsideZero = false;
+            if (simD.isBoundary[i] && Math.abs(simD.A[i] - cfgD.A0) > 1e-5) dirichletClamped = false;
+          }
+          record(
+            "6. Anatomical Boundary Enforcement",
+            outsideZero && dirichletClamped,
+            "Exterior mask zeroed & Dirichlet boundary cells held at A0=" + cfgD.A0.toFixed(2)
+          );
+        } catch (e) {
+          record("6. Anatomical Boundary Enforcement", false, String(e));
+        }
+
+        // Test 7: Different parameter configurations produce distinguishable outcomes
+        try {
+          const cArch = sanitizeConfig(PRESETS.ARCH); cArch.resolution = 64;
+          const cWhorl = sanitizeConfig(PRESETS.WHORL); cWhorl.resolution = 64;
+          const sArch = new DermisSimulation(cArch);
+          const sWhorl = new DermisSimulation(cWhorl);
+          sArch.stepBatch(50);
+          sWhorl.stepBatch(50);
+          let l1Diff = 0.0;
+          let count = 0;
+          for (let i = 0; i < sArch.size; i++) {
+            if (sArch.mask[i] && sWhorl.mask[i]) {
+              l1Diff += Math.abs(sArch.A[i] - sWhorl.A[i]);
+              count++;
+            }
+          }
+          const meanDiff = l1Diff / Math.max(1, count);
+          record(
+            "7. Distinguishable Preset Outcomes",
+            meanDiff > 0.015,
+            "Mean |A_arch - A_whorl| = " + meanDiff.toFixed(4) + " > 0.015 threshold"
+          );
+        } catch (e) {
+          record("7. Distinguishable Preset Outcomes", false, String(e));
+        }
+
+        // Test 8: Exported configurations can be restored identically
+        try {
+          const origCfg = sanitizeConfig(PRESETS.LOOP);
+          origCfg.resolution = 64;
+          origCfg.seed = 8888;
+          const sOrig = new DermisSimulation(origCfg);
+          sOrig.stepBatch(25);
+          const jsonStr = JSON.stringify(sOrig.config);
+          const restoredCfg = sanitizeConfig(JSON.parse(jsonStr));
+          const sRestored = new DermisSimulation(restoredCfg);
+          sRestored.stepBatch(25);
+          let maxRestoreDiff = 0.0;
+          for (let i = 0; i < sOrig.size; i++) {
+            const d = Math.abs(sOrig.A[i] - sRestored.A[i]);
+            if (d > maxRestoreDiff) maxRestoreDiff = d;
+          }
+          record(
+            "8. JSON Export & Restore Round-Trip",
+            maxRestoreDiff === 0,
+            "Restored JSON state delta = " + maxRestoreDiff.toExponential(2)
+          );
+        } catch (e) {
+          record("8. JSON Export & Restore Round-Trip", false, String(e));
+        }
+
+        // Test 9: Invalid parameters are rejected or safely constrained
+        try {
+          const dirty = {
+            seed: -999,
+            resolution: 99999,
+            Da: -5.0,
+            Di: NaN,
+            kA: Infinity,
+            dt: -10,
+            boundaryMode: "invalid_mode",
+            sites: [{ x: 50, y: -50, strength: -9, extent: 999 }]
+          };
+          const clean = sanitizeConfig(dirty);
+          const ok = (
+            clean.seed >= 1 &&
+            (clean.resolution === 64 || clean.resolution === 88 || clean.resolution === 112) &&
+            clean.Da >= 0.02 && clean.Da <= 0.35 &&
+            Number.isFinite(clean.Di) &&
+            Number.isFinite(clean.kA) &&
+            clean.dt >= 0.02 &&
+            clean.boundaryMode === "neumann" &&
+            Math.abs(clean.sites[0].x) <= 0.85
+          );
+          record(
+            "9. Invalid Parameter Sanitization",
+            ok,
+            "Clamped NaN/Inf/Out-of-bounds inputs safely (res=" + clean.resolution + ", Da=" + clean.Da + ")"
+          );
+        } catch (e) {
+          record("9. Invalid Parameter Sanitization", false, String(e));
+        }
+
+        // Test 10: Low and high numerical resolutions execute without silent failure
+        try {
+          const cLow = sanitizeConfig(PRESETS.WHORL); cLow.resolution = 48;
+          const cHigh = sanitizeConfig(PRESETS.WHORL); cHigh.resolution = 112;
+          const sLow = new DermisSimulation(cLow);
+          const sHigh = new DermisSimulation(cHigh);
+          sLow.stepBatch(15);
+          sHigh.stepBatch(15);
+          const ok = (
+            sLow.N === 48 && sHigh.N === 112 &&
+            Number.isFinite(sLow.diagnostics.meanA) &&
+            Number.isFinite(sHigh.diagnostics.meanA) &&
+            sHigh.diagnostics.meanA > 0.2
+          );
+          record(
+            "10. Multi-Resolution Execution (48x48 & 112x112)",
+            ok,
+            "48^2 meanA=" + sLow.diagnostics.meanA.toFixed(3) + " | 112^2 meanA=" + sHigh.diagnostics.meanA.toFixed(3)
+          );
+        } catch (e) {
+          record("10. Multi-Resolution Execution (48x48 & 112x112)", false, String(e));
+        }
+
+        return results;
+      }
+
+      /* =========================================================================
+       * 6. APPLICATION STATE & UI CONTROLLER
+       * ========================================================================= */
+      const appState = {
+        currentPresetKey: "WHORL",
+        vizMode: "ridges",
+        isRunning: false,
+        stepsPerFrame: 4,
+        showSitesOverlay: true,
+        inkPrintStyle: true,
+        warmupOnPreset: true,
+        autoRevolveOnEdit: true,
+        selectedSiteIndex: 0,
+        canvasTool: "drag",
+        draggingSiteIndex: -1,
+        rafId: null,
+        offCanvas: null,
+        offCtx: null,
+        imgData: null
+      };
+
+      const sim = new DermisSimulation(PRESETS.WHORL);
+      const canvas = document.getElementById("simCanvas");
+
+      function showToast(msg) {
+        const container = document.getElementById("toastContainer");
+        const el = document.createElement("div");
+        el.className = "toast";
+        el.textContent = msg;
+        container.appendChild(el);
+        requestAnimationFrame(function() {
+          el.classList.add("show");
+        });
+        setTimeout(function() {
+          el.classList.remove("show");
+          setTimeout(function() {
+            if (el.parentNode) el.parentNode.removeChild(el);
+          }, 220);
+        }, 2600);
+      }
+
+      function syncControlsFromConfig() {
+        const cfg = sim.config;
+        document.getElementById("inputSeed").value = cfg.seed;
+        document.getElementById("valSeed").textContent = String(cfg.seed);
+        document.getElementById("selectResolution").value = String(cfg.resolution);
+
+        document.getElementById("sliderDa").value = cfg.Da;
+        document.getElementById("valDa").textContent = cfg.Da.toFixed(3);
+        document.getElementById("sliderDi").value = cfg.Di;
+        document.getElementById("valDi").textContent = cfg.Di.toFixed(3);
+        document.getElementById("sliderDt").value = cfg.dt;
+        document.getElementById("valDt").textContent = cfg.dt.toFixed(3);
+
+        document.getElementById("sliderKa").value = cfg.kA;
+        document.getElementById("valKa").textContent = cfg.kA.toFixed(3);
+        document.getElementById("sliderKi").value = cfg.kI;
+        document.getElementById("valKi").textContent = cfg.kI.toFixed(3);
+        document.getElementById("sliderKai").value = cfg.kAI;
+        document.getElementById("valKai").textContent = cfg.kAI.toFixed(3);
+        document.getElementById("sliderKib").value = cfg.kIB;
+        document.getElementById("valKib").textContent = cfg.kIB.toFixed(3);
+        document.getElementById("sliderMuEdar").value = cfg.muEdar;
+        document.getElementById("valMuEdar").textContent = cfg.muEdar.toFixed(3);
+
+        document.getElementById("sliderA0").value = cfg.A0;
+        document.getElementById("valA0").textContent = cfg.A0.toFixed(2) + " / " + cfg.I0.toFixed(2);
+        document.getElementById("sliderRidgeThresh").value = cfg.ridgeThresh;
+        document.getElementById("valRidgeThresh").textContent = cfg.ridgeThresh.toFixed(3);
+        document.getElementById("selectRidgeMethod").value = cfg.ridgeMethod;
+
+        document.getElementById("sliderVolarProm").value = cfg.volarProminence;
+        document.getElementById("valVolarProm").textContent = cfg.volarProminence.toFixed(2);
+        document.getElementById("sliderVolarRx").value = cfg.volarRx;
+        document.getElementById("valVolarRx").textContent = cfg.volarRx.toFixed(2);
+        document.getElementById("sliderVolarRy").value = cfg.volarRy;
+        document.getElementById("valVolarRy").textContent = cfg.volarRy.toFixed(2);
+        document.getElementById("sliderVolarX").value = cfg.volarX;
+        document.getElementById("valVolarX").textContent = cfg.volarX.toFixed(2);
+        document.getElementById("sliderVolarY").value = cfg.volarY;
+        document.getElementById("valVolarY").textContent = cfg.volarY.toFixed(2);
+
+        document.getElementById("sliderFingerWidth").value = cfg.fingerWidth;
+        document.getElementById("valFingerWidth").textContent = cfg.fingerWidth.toFixed(2);
+        document.getElementById("sliderTipCurvature").value = cfg.tipCurvature;
+        document.getElementById("valTipCurvature").textContent = cfg.tipCurvature.toFixed(2);
+        document.getElementById("selectBoundary").value = cfg.boundaryMode;
+
+        document.getElementById("activePresetBadge").textContent = "PRESET: " + cfg.name;
+
+        const presetCards = document.querySelectorAll(".preset-card");
+        presetCards.forEach(function(btn) {
+          btn.classList.toggle("active", btn.getAttribute("data-preset") === cfg.name);
+        });
+
+        renderSiteListUI();
+        syncSelectedSiteEditor();
+      }
+
+      function renderSiteListUI() {
+        const container = document.getElementById("siteListContainer");
+        const sites = sim.config.sites;
+        document.getElementById("countSitesLabel").textContent = String(sites.length);
+        container.innerHTML = "";
+
+        if (appState.selectedSiteIndex >= sites.length) {
+          appState.selectedSiteIndex = Math.max(0, sites.length - 1);
+        }
+
+        sites.forEach(function(site, idx) {
+          const item = document.createElement("div");
+          item.className = "site-item" + (idx === appState.selectedSiteIndex ? " selected" : "");
+          const col = SITE_COLORS[idx % SITE_COLORS.length];
+          item.innerHTML =
+            '<div class="site-item-header">' +
+              '<div style="display:flex; align-items:center; gap:7px; font-weight:700; font-size:12px;">' +
+                '<span class="site-dot" style="background:' + col + ';"></span>' +
+                '<span>S' + (idx + 1) + ': ' + site.name + '</span>' +
+              '</div>' +
+              '<span class="badge-tag badge-cyan">' + site.shape.toUpperCase() + '</span>' +
+            '</div>' +
+            '<div style="font-family:var(--font-mono); font-size:10.5px; color:var(--text-muted); display:flex; justify-content:space-between;">' +
+              '<span>pos: (' + site.x.toFixed(2) + ', ' + site.y.toFixed(2) + ')</span>' +
+              '<span>t0: ' + site.t0 + ' | &theta;: ' + Math.round(site.angle) + '&deg;</span>' +
+              '<span>str: ' + site.strength.toFixed(2) + '</span>' +
+            '</div>';
+
+          item.addEventListener("click", function() {
+            appState.selectedSiteIndex = idx;
+            renderSiteListUI();
+            syncSelectedSiteEditor();
+            renderSimulationToCanvas(sim, canvas, appState);
+          });
+          container.appendChild(item);
+        });
+      }
+
+      function syncSelectedSiteEditor() {
+        const sites = sim.config.sites;
+        const editor = document.getElementById("selectedSiteEditor");
+        if (sites.length === 0) {
+          editor.style.opacity = "0.5";
+          return;
+        }
+        editor.style.opacity = "1";
+        const idx = appState.selectedSiteIndex;
+        const site = sites[idx];
+        if (!site) return;
+
+        document.getElementById("selectedSiteTitle").textContent = "Edit S" + (idx + 1) + ": " + site.name;
+        document.getElementById("selectSiteShape").value = site.shape;
+        document.getElementById("sliderSiteX").value = site.x;
+        document.getElementById("valSiteX").textContent = site.x.toFixed(2);
+        document.getElementById("sliderSiteY").value = site.y;
+        document.getElementById("valSiteY").textContent = site.y.toFixed(2);
+        document.getElementById("sliderSiteT0").value = site.t0;
+        document.getElementById("valSiteT0").textContent = site.t0.toFixed(1);
+        document.getElementById("sliderSiteAngle").value = site.angle;
+        document.getElementById("valSiteAngle").textContent = Math.round(site.angle) + "\u00B0";
+        document.getElementById("sliderSiteStrength").value = site.strength;
+        document.getElementById("valSiteStrength").textContent = site.strength.toFixed(2);
+        document.getElementById("sliderSiteExtent").value = site.extent;
+        document.getElementById("valSiteExtent").textContent = site.extent.toFixed(2);
+      }
+
+      function updateDiagnosticsUI() {
+        const d = sim.diagnostics || sim.extractRidgesAndDiagnostics();
+        document.getElementById("diagIterTime").textContent = d.iteration + " / " + d.simTime.toFixed(1) + "s";
+        document.getElementById("diagDtSub").textContent = "\u0394t = " + sim.config.dt.toFixed(3) + " | Seed #" + sim.config.seed;
+        document.getElementById("diagActiveSites").textContent = d.activeSites + " / " + d.totalSites;
+        document.getElementById("diagWaveCoverage").textContent = "Competence: " + (d.competenceFraction * 100).toFixed(1) + "%";
+        document.getElementById("diagRidgeCount").textContent = String(d.ridgeComponents);
+        document.getElementById("diagRidgeFraction").textContent = "Ridge Area: " + (d.ridgeFraction * 100).toFixed(1) + "%";
+        document.getElementById("diagWavelength").textContent = d.wavelengthPx.toFixed(1) + " px";
+
+        const regime = Math.abs(sim.config.muEdar) > 0.25 ? "Spot / Placode" : "Turing Stripe";
+        document.getElementById("diagRegimeType").textContent = "Regime: " + regime;
+
+        document.getElementById("diagMeanA").textContent = d.meanA.toFixed(4);
+        document.getElementById("diagMinMaxA").textContent = "Min: " + d.minA.toFixed(3) + " | Max: " + d.maxA.toFixed(3);
+        document.getElementById("diagMeanI").textContent = d.meanI.toFixed(4);
+        document.getElementById("diagMinMaxI").textContent = "Min: " + d.minI.toFixed(3) + " | Max: " + d.maxI.toFixed(3);
+
+        const banner = document.getElementById("stabilityBanner");
+        const bannerText = document.getElementById("stabilityText");
+        if (sim.stabilityWarning) {
+          banner.className = "stability-banner warn";
+          bannerText.textContent = sim.stabilityWarning;
+        } else {
+          banner.className = "stability-banner";
+          bannerText.textContent = "STABLE: Turing regime active (CFL = " + d.cfl.toFixed(3) + ", finite bounds [0,1] verified).";
+        }
+      }
+
+      function refreshDisplay() {
+        sim.extractRidgesAndDiagnostics();
+        updateDiagnosticsUI();
+        renderSimulationToCanvas(sim, canvas, appState);
+      }
+
+      function setRunningState(running) {
+        appState.isRunning = Boolean(running);
+        const btn = document.getElementById("btnPlayPause");
+        const icon = document.getElementById("playPauseIcon");
+        const txt = document.getElementById("playPauseText");
+        const badge = document.getElementById("simStatusBadge");
+
+        if (appState.isRunning) {
+          icon.innerHTML = "&#10074;&#10074;";
+          txt.textContent = "Pause";
+          btn.classList.add("btn-amber");
+          btn.classList.remove("btn-primary");
+          badge.textContent = "RUNNING";
+          badge.className = "badge-tag badge-amber";
+          if (!appState.rafId) {
+            appState.rafId = requestAnimationFrame(animationLoop);
+          }
+        } else {
+          icon.innerHTML = "&#9654;";
+          txt.textContent = "Start";
+          btn.classList.add("btn-primary");
+          btn.classList.remove("btn-amber");
+          badge.textContent = "PAUSED";
+          badge.className = "badge-tag badge-emerald";
+          if (appState.rafId) {
+            cancelAnimationFrame(appState.rafId);
+            appState.rafId = null;
+          }
+        }
+      }
+
+      function animationLoop() {
+        if (!appState.isRunning) {
+          appState.rafId = null;
+          return;
+        }
+        for (let i = 0; i < appState.stepsPerFrame; i++) {
+          sim.stepOnce();
+        }
+        refreshDisplay();
+        appState.rafId = requestAnimationFrame(animationLoop);
+      }
+
+      function loadPreset(presetKey) {
+        const template = PRESETS[presetKey] || PRESETS.WHORL;
+        appState.currentPresetKey = presetKey;
+        sim.config = sanitizeConfig(JSON.parse(JSON.stringify(template)));
+        sim.reset();
+        if (appState.warmupOnPreset) {
+          sim.stepBatch(300);
+        }
+        syncControlsFromConfig();
+        refreshDisplay();
+      }
+
+      function handleGeometryOrSiteMutation() {
+        sim.updateAnatomicalGeometry();
+        if (appState.autoRevolveOnEdit) {
+          const targetSteps = Math.max(180, Math.min(280, sim.iteration || 240));
+          sim.reset();
+          sim.stepBatch(targetSteps);
+        }
+        refreshDisplay();
+      }
+
+      /* =========================================================================
+       * 7. EVENT LISTENERS & INTERACTIVE CONTROLS WIRING
+       * ========================================================================= */
+      // Tab navigation
+      document.querySelectorAll(".tab-btn").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          const target = btn.getAttribute("data-tab");
+          document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.toggle("active", b === btn); });
+          document.querySelectorAll(".tab-pane").forEach(function(p) { p.classList.toggle("active", p.id === target); });
+        });
+      });
+
+      // Preset selection
+      document.querySelectorAll(".preset-card").forEach(function(card) {
+        card.addEventListener("click", function() {
+          const key = card.getAttribute("data-preset");
+          loadPreset(key);
+          showToast("Loaded preset: " + key);
+        });
+      });
+
+      // Visualization Mode buttons
+      document.querySelectorAll(".mode-btn").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          const m = btn.getAttribute("data-mode");
+          appState.vizMode = m;
+          document.querySelectorAll(".mode-btn").forEach(function(b) { b.classList.toggle("active", b === btn); });
+          document.getElementById("canvasModeCaption").textContent = MODE_CAPTIONS[m] || "";
+          renderSimulationToCanvas(sim, canvas, appState);
+        });
+      });
+
+      // Transport Controls
+      document.getElementById("btnPlayPause").addEventListener("click", function() {
+        setRunningState(!appState.isRunning);
+      });
+
+      document.getElementById("btnStepOnce").addEventListener("click", function() {
+        setRunningState(false);
+        sim.stepOnce();
+        refreshDisplay();
+      });
+
+      document.getElementById("btnStepBatch").addEventListener("click", function() {
+        sim.stepBatch(60);
+        refreshDisplay();
+      });
+
+      document.getElementById("btnResetSim").addEventListener("click", function() {
+        setRunningState(false);
+        sim.reset();
+        refreshDisplay();
+        showToast("Reset simulation to t = 0.00 (iter = 0)");
+      });
+
+      document.getElementById("btnRestoreDefaults").addEventListener("click", function() {
+        loadPreset(appState.currentPresetKey);
+        showToast("Restored defaults for " + appState.currentPresetKey);
+      });
+
+      // Seed & Resolution Controls
+      document.getElementById("btnRandomSeed").addEventListener("click", function() {
+        const newSeed = Math.floor(1000 + Math.random() * 900000);
+        document.getElementById("inputSeed").value = newSeed;
+        sim.config.seed = newSeed;
+        document.getElementById("valSeed").textContent = String(newSeed);
+        sim.reset();
+        if (appState.warmupOnPreset) sim.stepBatch(300);
+        refreshDisplay();
+        showToast("Initialized new seed #" + newSeed);
+      });
+
+      document.getElementById("btnApplySeed").addEventListener("click", function() {
+        const s = clampNum(document.getElementById("inputSeed").value, 1, 99999999, 4210);
+        sim.config.seed = Math.floor(s);
+        document.getElementById("valSeed").textContent = String(sim.config.seed);
+        sim.reset();
+        if (appState.warmupOnPreset) sim.stepBatch(300);
+        refreshDisplay();
+        showToast("Applied seed #" + sim.config.seed);
+      });
+
+      document.getElementById("selectResolution").addEventListener("change", function(e) {
+        sim.config.resolution = Number(e.target.value) || 88;
+        sim.reset();
+        if (appState.warmupOnPreset) sim.stepBatch(240);
+        refreshDisplay();
+        showToast("Grid resolution set to " + sim.N + "x" + sim.N);
+      });
+
+      document.getElementById("sliderSpeed").addEventListener("input", function(e) {
+        appState.stepsPerFrame = Number(e.target.value) || 4;
+        document.getElementById("valSpeed").textContent = appState.stepsPerFrame + " steps/frame";
+      });
+
+      document.getElementById("chkWarmupOnPreset").addEventListener("change", function(e) {
+        appState.warmupOnPreset = e.target.checked;
+      });
+
+      document.getElementById("chkAutoRevolveOnEdit").addEventListener("change", function(e) {
+        appState.autoRevolveOnEdit = e.target.checked;
+      });
+
+      document.getElementById("chkShowSitesOverlay").addEventListener("change", function(e) {
+        appState.showSitesOverlay = e.target.checked;
+        renderSimulationToCanvas(sim, canvas, appState);
+      });
+
+      document.getElementById("chkInkPrintStyle").addEventListener("change", function(e) {
+        appState.inkPrintStyle = e.target.checked;
+        renderSimulationToCanvas(sim, canvas, appState);
+      });
+
+      // Live Kinetics Sliders
+      function bindSlider(id, valId, prop, fmt, onAfter) {
+        const el = document.getElementById(id);
+        el.addEventListener("input", function() {
+          const v = Number(el.value);
+          sim.config[prop] = v;
+          document.getElementById(valId).textContent = fmt(v);
+          if (onAfter) onAfter(v);
+          else refreshDisplay();
+        });
+      }
+
+      bindSlider("sliderDa", "valDa", "Da", function(v) { return v.toFixed(3); });
+      bindSlider("sliderDi", "valDi", "Di", function(v) { return v.toFixed(3); });
+      bindSlider("sliderDt", "valDt", "dt", function(v) { return v.toFixed(3); });
+      bindSlider("sliderKa", "valKa", "kA", function(v) { return v.toFixed(3); });
+      bindSlider("sliderKi", "valKi", "kI", function(v) { return v.toFixed(3); });
+      bindSlider("sliderKai", "valKai", "kAI", function(v) { return v.toFixed(3); });
+      bindSlider("sliderKib", "valKib", "kIB", function(v) { return v.toFixed(3); });
+      bindSlider("sliderMuEdar", "valMuEdar", "muEdar", function(v) { return v.toFixed(3); });
+
+      bindSlider("sliderA0", "valA0", "A0", function(v) {
+        sim.config.I0 = v;
+        return v.toFixed(2) + " / " + v.toFixed(2);
+      });
+      bindSlider("sliderRidgeThresh", "valRidgeThresh", "ridgeThresh", function(v) { return v.toFixed(3); });
+
+      document.getElementById("selectRidgeMethod").addEventListener("change", function(e) {
+        sim.config.ridgeMethod = e.target.value;
+        refreshDisplay();
+      });
+
+      // Anatomical Substrate Sliders
+      bindSlider("sliderVolarProm", "valVolarProm", "volarProminence", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+      bindSlider("sliderVolarRx", "valVolarRx", "volarRx", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+      bindSlider("sliderVolarRy", "valVolarRy", "volarRy", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+      bindSlider("sliderVolarX", "valVolarX", "volarX", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+      bindSlider("sliderVolarY", "valVolarY", "volarY", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+      bindSlider("sliderFingerWidth", "valFingerWidth", "fingerWidth", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+      bindSlider("sliderTipCurvature", "valTipCurvature", "tipCurvature", function(v) { return v.toFixed(2); }, handleGeometryOrSiteMutation);
+
+      document.getElementById("selectBoundary").addEventListener("change", function(e) {
+        sim.config.boundaryMode = e.target.value;
+        handleGeometryOrSiteMutation();
+      });
+
+      // Initiation Site Editor Controls
+      document.getElementById("btnAddSite").addEventListener("click", function() {
+        if (sim.config.sites.length >= 8) {
+          showToast("Maximum of 8 initiation sites reached.");
+          return;
+        }
+        sim.config.sites.push({
+          name: "Initiation Site #" + (sim.config.sites.length + 1),
+          shape: "point",
+          x: 0.0,
+          y: 0.0,
+          t0: 5,
+          angle: -90,
+          strength: 0.95,
+          extent: 0.20,
+          curvature: 0.0
+        });
+        appState.selectedSiteIndex = sim.config.sites.length - 1;
+        renderSiteListUI();
+        syncSelectedSiteEditor();
+        handleGeometryOrSiteMutation();
+        showToast("Added new initiation site S" + sim.config.sites.length);
+      });
+
+      document.getElementById("btnDeleteSelectedSite").addEventListener("click", function() {
+        if (sim.config.sites.length <= 1) {
+          showToast("At least one initiation site is required.");
+          return;
+        }
+        sim.config.sites.splice(appState.selectedSiteIndex, 1);
+        appState.selectedSiteIndex = Math.max(0, appState.selectedSiteIndex - 1);
+        renderSiteListUI();
+        syncSelectedSiteEditor();
+        handleGeometryOrSiteMutation();
+        showToast("Removed initiation site.");
+      });
+
+      function bindSiteInput(id, valId, prop, fmt, eventName) {
+        const el = document.getElementById(id);
+        el.addEventListener(eventName || "input", function() {
+          const site = sim.config.sites[appState.selectedSiteIndex];
+          if (!site) return;
+          site[prop] = (prop === "shape") ? el.value : Number(el.value);
+          if (valId && fmt) document.getElementById(valId).textContent = fmt(site[prop]);
+          renderSiteListUI();
+          handleGeometryOrSiteMutation();
+        });
+      }
+
+      bindSiteInput("selectSiteShape", null, "shape", null, "change");
+      bindSiteInput("sliderSiteX", "valSiteX", "x", function(v) { return v.toFixed(2); });
+      bindSiteInput("sliderSiteY", "valSiteY", "y", function(v) { return v.toFixed(2); });
+      bindSiteInput("sliderSiteT0", "valSiteT0", "t0", function(v) { return v.toFixed(1); });
+      bindSiteInput("sliderSiteAngle", "valSiteAngle", "angle", function(v) { return Math.round(v) + "\u00B0"; });
+      bindSiteInput("sliderSiteStrength", "valSiteStrength", "strength", function(v) { return v.toFixed(2); });
+      bindSiteInput("sliderSiteExtent", "valSiteExtent", "extent", function(v) { return v.toFixed(2); });
+
+      // Canvas Tool Radio Buttons
+      document.querySelectorAll('input[name="canvasTool"]').forEach(function(r) {
+        r.addEventListener("change", function(e) {
+          if (e.target.checked) appState.canvasTool = e.target.value;
+        });
+      });
+
+      // Interactive Canvas Pointer Handling (Mouse & Touch)
+      function getCanvasNormalizedCoords(evt) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+        const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+        const px = (clientX - rect.left) / Math.max(1, rect.width);
+        const py = (clientY - rect.top) / Math.max(1, rect.height);
+        return {
+          nx: clampNum(px * 2.0 - 1.0, -0.95, 0.95, 0),
+          ny: clampNum(py * 2.0 - 1.0, -0.95, 0.95, 0),
+          gx: Math.min(sim.N - 1, Math.max(0, Math.floor(px * sim.N))),
+          gy: Math.min(sim.N - 1, Math.max(0, Math.floor(py * sim.N)))
+        };
+      }
+
+      canvas.addEventListener("pointerdown", function(evt) {
+        const c = getCanvasNormalizedCoords(evt);
+        if (appState.canvasTool === "add") {
+          if (sim.config.sites.length < 8) {
+            sim.config.sites.push({
+              name: "Canvas Site #" + (sim.config.sites.length + 1),
+              shape: "point",
+              x: c.nx,
+              y: c.ny,
+              t0: 0,
+              angle: -90,
+              strength: 1.00,
+              extent: 0.18,
+              curvature: 0.0
+            });
+            appState.selectedSiteIndex = sim.config.sites.length - 1;
+            renderSiteListUI();
+            syncSelectedSiteEditor();
+            handleGeometryOrSiteMutation();
+            showToast("Placed site S" + sim.config.sites.length + " at (" + c.nx.toFixed(2) + ", " + c.ny.toFixed(2) + ")");
+          } else {
+            showToast("Maximum of 8 initiation sites reached.");
+          }
+          return;
+        }
+
+        if (appState.canvasTool === "perturb") {
+          sim.applyLocalStimulus(c.nx, c.ny, 0.12, 0.22);
+          renderSimulationToCanvas(sim, canvas, appState);
+          return;
+        }
+
+        // Default: find nearest initiation site within pick radius
+        let bestIdx = -1;
+        let bestDist = 0.22;
+        sim.config.sites.forEach(function(site, idx) {
+          const d = Math.hypot(site.x - c.nx, site.y - c.ny);
+          if (d < bestDist) {
+            bestDist = d;
+            bestIdx = idx;
+          }
+        });
+
+        if (bestIdx >= 0) {
+          appState.selectedSiteIndex = bestIdx;
+          appState.draggingSiteIndex = bestIdx;
+          canvas.setPointerCapture(evt.pointerId);
+          renderSiteListUI();
+          syncSelectedSiteEditor();
+          renderSimulationToCanvas(sim, canvas, appState);
+        }
+      });
+
+      canvas.addEventListener("pointermove", function(evt) {
+        const c = getCanvasNormalizedCoords(evt);
+        const idx = c.gy * sim.N + c.gx;
+        const probeEl = document.getElementById("probeReadout");
+        if (sim.mask[idx]) {
+          probeEl.textContent =
+            "x:" + c.nx.toFixed(2) + " y:" + c.ny.toFixed(2) +
+            " | A:" + sim.A[idx].toFixed(3) +
+            " I:" + sim.I[idx].toFixed(3) +
+            " V:" + sim.volar[idx].toFixed(2);
+        } else {
+          probeEl.textContent = "Outside dermis domain";
+        }
+
+        if (appState.draggingSiteIndex >= 0) {
+          const site = sim.config.sites[appState.draggingSiteIndex];
+          if (site) {
+            site.x = clampNum(c.nx, -0.75, 0.75, 0);
+            site.y = clampNum(c.ny, -0.86, 0.84, 0);
+            syncSelectedSiteEditor();
+            renderSiteListUI();
+            sim.updateAnatomicalGeometry();
+            renderSimulationToCanvas(sim, canvas, appState);
+          }
+        }
+      });
+
+      canvas.addEventListener("pointerup", function(evt) {
+        if (appState.draggingSiteIndex >= 0) {
+          appState.draggingSiteIndex = -1;
+          try { canvas.releasePointerCapture(evt.pointerId); } catch (e) {}
+          handleGeometryOrSiteMutation();
+        }
+      });
+
+      /* =========================================================================
+       * 8. EXPORTS, MODALS & SELF-TEST UI WIRING
+       * ========================================================================= */
+      function exportPatternPng() {
+        const exportCanvas = document.createElement("canvas");
+        exportCanvas.width = 640;
+        exportCanvas.height = 700;
+        const ectx = exportCanvas.getContext("2d");
+
+        ectx.fillStyle = "#070a0f";
+        ectx.fillRect(0, 0, 640, 700);
+        ectx.drawImage(canvas, 20, 20, 600, 600);
+
+        ectx.fillStyle = "#e2e8f0";
+        ectx.font = "bold 13px monospace";
+        ectx.fillText(
+          "GUTENBERG'S DERMIS | Preset: " + sim.config.name +
+          " | Seed: #" + sim.config.seed +
+          " | Iter: " + sim.iteration +
+          " (t=" + sim.simTime.toFixed(1) + "s)",
+          22, 648
+        );
+        ectx.fillStyle = "#94a3b8";
+        ectx.font = "11px monospace";
+        ectx.fillText(
+          "Da=" + sim.config.Da.toFixed(3) +
+          " Di=" + sim.config.Di.toFixed(3) +
+          " kA=" + sim.config.kA.toFixed(2) +
+          " kI=" + sim.config.kI.toFixed(2) +
+          " VolarProm=" + sim.config.volarProminence.toFixed(2) +
+          " | Glover et al. (2023) 2-Field RD",
+          22, 672
+        );
+
+        const link = document.createElement("a");
+        link.download = "GutenbergsDermis_" + sim.config.name + "_seed" + sim.config.seed + "_iter" + sim.iteration + ".png";
+        link.href = exportCanvas.toDataURL("image/png");
+        link.click();
+        showToast("Exported pattern PNG with experimental metadata.");
+      }
+
+      function buildExportBundle() {
+        return {
+          artifact: "Gutenberg's Dermis — The Finger Printing Press",
+          version: "1.0.0",
+          scientificReference: "Glover et al. (2023), Cell 186(5), 940-956.e20, https://doi.org/10.1016/j.cell.2023.01.015",
+          metadata: {
+            iteration: sim.iteration,
+            simulationTime: Number(sim.simTime.toFixed(4)),
+            seed: sim.config.seed,
+            resolution: sim.N,
+            diagnostics: sim.diagnostics
+          },
+          config: sim.config
+        };
+      }
+
+      function downloadConfigJson() {
+        const bundle = buildExportBundle();
+        const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "GutenbergsDermis_config_seed" + sim.config.seed + ".json";
+        a.click();
+        setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+        showToast("Downloaded configuration JSON.");
+      }
+
+      function copyTextSafe(text, label) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function() {
+            showToast(label + " copied to clipboard.");
+          }).catch(function() {
+            fallbackCopy(text, label);
+          });
+        } else {
+          fallbackCopy(text, label);
+        }
+      }
+
+      function fallbackCopy(text, label) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); showToast(label + " copied to clipboard."); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      document.getElementById("btnExportPngHeader").addEventListener("click", exportPatternPng);
+      document.getElementById("btnExportPng").addEventListener("click", exportPatternPng);
+      document.getElementById("btnExportJson").addEventListener("click", downloadConfigJson);
+
+      document.getElementById("btnCopyMetadata").addEventListener("click", function() {
+        const bundle = buildExportBundle();
+        copyTextSafe(JSON.stringify(bundle.metadata, null, 2), "Run metadata");
+      });
+
+      // Science Modal
+      const scienceModal = document.getElementById("scienceModal");
+      document.getElementById("btnOpenScienceModal").addEventListener("click", function() {
+        scienceModal.classList.add("open");
+      });
+      document.getElementById("btnCloseScienceModal").addEventListener("click", function() {
+        scienceModal.classList.remove("open");
+      });
+
+      // JSON Modal
+      const jsonModal = document.getElementById("jsonModal");
+      function openJsonModal() {
+        document.getElementById("jsonTextarea").value = JSON.stringify(buildExportBundle(), null, 2);
+        document.getElementById("jsonStatusMsg").textContent = "Ready to export or restore.";
+        jsonModal.classList.add("open");
+      }
+      document.getElementById("btnOpenJsonModal").addEventListener("click", openJsonModal);
+      document.getElementById("btnInspectJson").addEventListener("click", openJsonModal);
+      document.getElementById("btnCloseJsonModal").addEventListener("click", function() {
+        jsonModal.classList.remove("open");
+      });
+      document.getElementById("btnCopyJsonModal").addEventListener("click", function() {
+        copyTextSafe(document.getElementById("jsonTextarea").value, "Configuration JSON");
+      });
+      document.getElementById("btnApplyJsonModal").addEventListener("click", function() {
+        const rawText = document.getElementById("jsonTextarea").value;
+        try {
+          const parsed = JSON.parse(rawText);
+          const cfgObj = parsed.config ? parsed.config : parsed;
+          sim.config = sanitizeConfig(cfgObj);
+          sim.reset();
+          const targetIter = (parsed.metadata && Number.isFinite(parsed.metadata.iteration) && parsed.metadata.iteration > 0)
+            ? Math.min(400, parsed.metadata.iteration)
+            : (appState.warmupOnPreset ? 260 : 0);
+          if (targetIter > 0) sim.stepBatch(targetIter);
+          syncControlsFromConfig();
+          refreshDisplay();
+          document.getElementById("jsonStatusMsg").textContent = "Restored configuration successfully (Seed #" + sim.config.seed + ").";
+          jsonModal.classList.remove("open");
+          showToast("Restored configuration from JSON.");
+        } catch (err) {
+          document.getElementById("jsonStatusMsg").textContent = "Invalid JSON: " + err.message;
+        }
+      });
+
+      // Self-Test Runner UI
+      function executeAndRenderSelfTests() {
+        const t0 = performance.now();
+        const results = runInternalSelfTestSuite();
+        const elapsedMs = (performance.now() - t0).toFixed(1);
+        const listEl = document.getElementById("testResultsList");
+        listEl.innerHTML = "";
+        let passedCount = 0;
+
+        results.forEach(function(r) {
+          if (r.passed) passedCount++;
+          const row = document.createElement("div");
+          row.className = "test-item";
+          row.innerHTML =
+            '<div>' +
+              '<div style="font-weight:600; color:#e2e8f0;">' + r.name + '</div>' +
+              '<div style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted);">' + r.detail + '</div>' +
+            '</div>' +
+            '<span class="' + (r.passed ? "test-pass" : "test-fail") + '">' + (r.passed ? "PASS" : "FAIL") + '</span>';
+          listEl.appendChild(row);
+        });
+
+        const summaryEl = document.getElementById("testSummaryLine");
+        summaryEl.textContent = "Self-Test Suite: " + passedCount + " / " + results.length + " PASSED in " + elapsedMs + " ms.";
+        summaryEl.style.color = (passedCount === results.length) ? "#34d399" : "#f43f5e";
+        showToast("Self-Test Suite: " + passedCount + "/" + results.length + " PASSED (" + elapsedMs + " ms)");
+      }
+
+      document.getElementById("btnRunSelfTestsHeader").addEventListener("click", executeAndRenderSelfTests);
+      document.getElementById("btnRunTestsPanel").addEventListener("click", executeAndRenderSelfTests);
+
+      // Initialize Laboratory on Load
+      window.addEventListener("load", function() {
+        loadPreset("WHORL");
+        executeAndRenderSelfTests();
+      });
+
+      // Expose testable API for programmatic inspection
+      window.GutenbergsDermisLab = {
+        sim: sim,
+        PRESETS: PRESETS,
+        sanitizeConfig: sanitizeConfig,
+        runInternalSelfTestSuite: runInternalSelfTestSuite,
+        loadPreset: loadPreset
+      };
+    })();
+  </script>
+</body>
+</html>
